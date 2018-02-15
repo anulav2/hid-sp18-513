@@ -20,9 +20,9 @@ def processor():
 
 def disk():
     diskdata = {
-       "Disk Size": psutil.disk_usage().total,
-       "Disk Free": psutil.disk_usage().available,
-       "Disk Used": psutil.disk_usage().used
+       "Disk Size": psutil.disk_usage('/').total,
+       "Disk Free": psutil.disk_usage('/').available,
+       "Disk Used": psutil.disk_usage('/').used
     }
     return format(diskdata)
 
