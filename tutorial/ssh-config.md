@@ -4,8 +4,11 @@ SSH stands for Secure SHell. SSH allows you to connect to that other system secu
     /etc/ssh/ssh_config
 
 ssh command gets the configuration data from the below three mentioned sources in the order they are stated:
+
     command line options 
+    
     user-specific configuration file (~/.ssh/config)
+    
     system-wide configuration file (/etc/ssh/ssh_config)
 
 Generating a key pair provides you with two long string of characters: a public and a private key. You can place the public key on any server, and then unlock it by connecting to it with a client that already has the private key. When the two match up, the system unlocks without the need for a password. You can also secure by protecting the private key with a passphrase.
