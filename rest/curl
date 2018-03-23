@@ -1,0 +1,3 @@
+curl -H "Content-Type:application-json" http://localhost:5000/ubuntu/processor
+curl -H "Content-Type:application-json" http://localhost:5000/ubuntu/disk
+curl -H "Content-Type:application-json" http://localhost:5000/ubuntu/ram
