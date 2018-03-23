@@ -1,3 +1,0 @@
-DOMAIN = {}
-
-RESOURCE_METHODS = ['GET']
