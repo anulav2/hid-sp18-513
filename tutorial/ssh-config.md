@@ -54,15 +54,15 @@ Step 4: Copy the Public Key
 
 Once the key pair is generated, use the following command to append the public key to authorized_keys on the server that you want to use. You can copy the public key into the new machine's authorized_keys file with the ssh-copy-id command. 
 
-ssh-copy-id <USERNAME>@<IP-ADDRESS>
+ssh-copy-id user@host
 
 Note that this time you will have to authenticate with your password.
 
 Alternatively, if the ssh-copy-id is not available on your system, you can copy the file manually over SSH:
 
-cat ~/.ssh/id_rsa.pub | ssh <USERNAME>@<IP-ADDRESS> 'cat >> .ssh/authorized_keys'
+cat ~/.ssh/id_rsa.pub | ssh user@host 'cat >> .ssh/authorized_keys'
 
-Now try ssh <USER>@<IP-ADDRESS> and you will not be prompted for a password. However, if you set a passphrase when creating your SSH key, you will be asked to enter the passphrase at that time (and whenever else you log in in the future).
+Now try ssh user@host and you will not be prompted for a password. However, if you set a passphrase when creating your SSH key, you will be asked to enter the passphrase at that time (and whenever else you log in in the future).
 
 If you see a message "Agent admitted failure to sign using the key" then add your RSA or DSA identities to the authentication agent ssh-agent then execute the following command:
 
