@@ -25,8 +25,8 @@ secure by protecting the private key with a passphrase.
 ## Step 1: Check for Existing SSH Keys
   
 Check whether there are already keys on the computer you are using :
-
-   * ls ~/.ssh
+	
+  	 * ls ~/.ssh
 
 If there are files named id_rsa.pub or id_dsa.pub, then the keys are set up 
 already, and we can skip the generating keys step (or delete these files with
