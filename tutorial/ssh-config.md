@@ -26,7 +26,7 @@ secure by protecting the private key with a passphrase.
   
 Check whether there are already keys on the computer you are using :
 
-   ls ~/.ssh
+   * ls ~/.ssh
 
 If there are files named id_rsa.pub or id_dsa.pub, then the keys are set up 
 already, and we can skip the generating keys step (or delete these files with
@@ -36,7 +36,7 @@ rm id* and make new keys).
 
 To generate new SSH keys enter the following command:
 
-   ssh-keygen
+   * ssh-keygen
 
 ## Step 3 : Store the Keys and Passphrase
 
@@ -50,26 +50,25 @@ someone else copied your key, they could not impersonate you to gain access.
 If you choose to use a passphrase, enter you passphrase and press Enter, then 
 type it again when prompted. If you want, no passphrase, Leave the field empty.
 
-# To see what's in .ssh directory:
+## To see what's in .ssh directory:
 
-   ls ~/.ssh
+   * ls ~/.ssh
 
 authorized_keys  id_rsa  id_rsa.pub  known_hosts
 
-	* The id_rsa file is your private key. Keep this on your computer and do 
-		not share this file.
+	* The id_rsa file is your private key. Keep this on your computer and do not share this file.
 
 	* The id_rsa.pub file is your public key. This is what you share with 
 		machines you want to connect to. When the machine you try to connect to
 		matches up your public and private key, it will allow you to connect.
 
-# To view public key:
+## To view public key:
 
-   cat ~/.ssh/id_rsa.pub
+   * cat ~/.ssh/id_rsa.pub
 	
 It should be in the form:
 
-   ssh-rsa <LONG STRING OF RANDOM CHARACTERS> user@host
+   * ssh-rsa <LONG STRING OF RANDOM CHARACTERS> user@host
 
 ## Step 4: Copy the Public Key
 
@@ -78,14 +77,14 @@ key to authorized_keys on the server that you want to use. You can copy the
 public key into the new machine's authorized_keys file with the ssh-copy-id 
 command. 
 
-   ssh-copy-id user@host
+   * ssh-copy-id user@host
 
 Note that this time you will have to authenticate with your password.
 
 Alternatively, if the ssh-copy-id is not available on your system, you can copy
 the file manually over SSH:
 
-   cat ~/.ssh/id_rsa.pub | ssh user@host 'cat >> .ssh/authorized_keys'
+   * cat ~/.ssh/id_rsa.pub | ssh user@host 'cat >> .ssh/authorized_keys'
 
 Now try ssh user@host and you will not be prompted for a password. However, if 
 you set a passphrase when creating your SSH key, you will be asked to enter the
@@ -95,7 +94,7 @@ If you see a message "Agent admitted failure to sign using the key" then add
 your RSA or DSA identities to the authentication agent ssh-agent then execute the 
 following command:
 
-   ssh-add
+   * ssh-add
 
 If this did not work, delete your keys with rm ~/.ssh/id* and follow the 
 instructions again.
