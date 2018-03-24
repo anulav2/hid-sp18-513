@@ -87,6 +87,7 @@ the file manually over SSH:
 	cat ~/.ssh/id_rsa.pub | ssh user@host 'cat >> .ssh/authorized_keys'
 
 Now try :
+
 	ssh user@host 
 
 and you will not be prompted for a password. However, if you set a passphrase 
@@ -99,5 +100,8 @@ following command:
 
 	ssh-add
 
-If this did not work, delete your keys with rm ~/.ssh/id* and follow the 
-instructions again.
+If this did not work, delete your keys using the command :
+	
+	rm ~/.ssh/id* 
+	
+and follow the instructions again.
