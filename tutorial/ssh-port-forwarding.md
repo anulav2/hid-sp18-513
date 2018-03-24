@@ -4,19 +4,7 @@ between a local computer and a remote computer through which services can be
 relayed. Because the connection is encrypted, SSH tunneling is useful for  
 transmitting information that uses an unencrypted protocol.
 
-## Types of Port Forwarding
-There are three types of SSH Port Forwarding :
-
-	* Local Port Forwarding: Connections from the SSH client are forwarded via
-							the SSH server, then to a destination server
-
-	* Remote port forwarding: Connections from the SSH server are forwarded via
-							the SSH client, then to a destination server
-
-	* Dynamic port forwarding: connections from various programs are forwarded 
-							via the SSH client, then via the SSH server, and 
-							finally to several destination servers
-              
+            
 ## Prerequisites
   * Before you begin, you need to check if forwarding is allowed on the SSH server you will connect to.
   * You also need to have a SSH client on the computer you are working on. 
@@ -25,30 +13,78 @@ If you are using the OpenSSH server :
 
 	vi /etc/ssh/sshd_config 
 
-and look for ## AllowTcpForwarding and change them to Yes. 
-
-In addition, if you are going to use remote port forwarding (discussed later in this tutorial), 
-
-you also have to set ## GatewayPorts to Yes. 
+and look and change the following :
+## AllowTcpForwarding = Yes 
+## GatewayPorts = Yes (set this only if you are going to use remote port forwarding (discussed later in this tutorial))
 
 Then, you need to restart the server for the change to take effect.
 
 ## How to Restart the Server 
 If you are on :
 
-* Linux, depending upon the init system used by your distribution, run:
+* Linux, depending upon the init system used by your distribution, run :
 
 	  sudo systemctl restart sshd
 	  sudo service sshd restart
 	
  Note that depending on your distribution, you may have to change the service to ssh instead of sshd.
 
-* Mac, you can restart the server using:
+* Mac, you can restart the server using :
 
     sudo launchctl unload /System/Library/LaunchDaemons/ssh.plist
     sudo launchctl load -w /System/Library/LaunchDaemons/ssh.plist
 
 * Windows and want to set up a SSH server, have a look at MSYS2 or Cygwin.
+
+## Types of Port Forwarding
+There are three types of SSH Port forwarding :
+
+## Local Port Forwarding 
+Local port forwarding lets you connect from your local computer to another 
+server. It allows you to forward traffic on a port of your local computer
+to the SSH server, which is forwarded to a destination server. To use local 
+port forwarding, you need to know your destination server, and two port numbers.
+
+Example 1:
+
+		ssh -L 8080:www.cloudcomputing.org:80 <host>
+
+Where <host> should be replaced by the name of your laptop. 
+The -L option specifies local port forwarding. 
+For the duration of the SSH session, pointing your browser at 
+http://localhost:8080/ would send you to http://cloudcomputing.org
+
+Example 2:
+This example opens a connection to the www.cloudcomputing.com jump server, and 
+forwards any connection to port 80 on the local machine to port 80 on 
+intra.example.com.
+
+		ssh -L 80:intra.example.com:80 www.cloudcomputing.com
+
+
+Example 3:
+By default, anyone (even on different machines) can connect to the specified 
+port on the SSH client machine. However, this can be restricted to programs
+on the same host by supplying a bind address:
+
+		ssh -L 127.0.0.1:80:intra.example.com:80 www.cloudcomputing.com
+
+Example 4:
+
+		ssh -L 8080:www.Cloudcomputing.com:80 -L 12345:cloud.com:80 <host>
+		
+This would forward two connections, one to www.cloudcomputing.com, the other 
+to www.cloudubuntu.com. Pointing your browser at http://localhost:8080/ would 
+download pages from www.cloudcomputing.com, and pointing your browser to 
+http://localhost:12345/ would download pages from www.cloud.com.
+
+Example 5:
+The destination server can even be the same as the SSH server. 
+
+		ssh -L 5900:localhost:5900 <host>
+
+The LocalForward option in the OpenSSH client configuration file can be used to
+configure forwarding without having to specify it on command line.
 
 
 
