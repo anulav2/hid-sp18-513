@@ -3,7 +3,7 @@ ssh-add command adds SSH private keys  into the SSH authentication agent for
 implementing single sign-on with SSH. ssh-add allows the user to use any number
 of servers that is spread across any number of organizations, without having to
 type in a password every time when connecting between servers. This is commonly 
-used by system administrators to login to multiple server. 
+used by system administrators to login to multiple server.  
 
 ## ADDING DEFAULT KEYS :
 ssh-add can be run without arguments. When run without arguments, it adds the 
