@@ -52,7 +52,7 @@ Example 1:
 Where <host> should be replaced by the name of your laptop. 
 The -L option specifies local port forwarding. 
 For the duration of the SSH session, pointing your browser at 
-http://localhost:8080/ would send you to http://cloudcomputing.org
+http://localhost:8080/ would send you to http://cloudcomputing.com
 
 Example 2:
 This example opens a connection to the www.cloudcomputing.com jump server, and 
@@ -74,7 +74,7 @@ Example 4:
 		ssh -L 8080:www.Cloudcomputing.com:80 -L 12345:cloud.com:80 <host>
 		
 This would forward two connections, one to www.cloudcomputing.com, the other 
-to www.cloudubuntu.com. Pointing your browser at http://localhost:8080/ would 
+to www.cloud.com. Pointing your browser at http://localhost:8080/ would 
 download pages from www.cloudcomputing.com, and pointing your browser to 
 http://localhost:12345/ would download pages from www.cloud.com.
 
@@ -85,6 +85,9 @@ The destination server can even be the same as the SSH server.
 
 The LocalForward option in the OpenSSH client configuration file can be used to
 configure forwarding without having to specify it on command line.
+
+## Remote Port Forwarding
+
 
 
 
