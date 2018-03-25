@@ -1,39 +1,355 @@
 % status: 0%
 % chapter: Technology
 
-\title{Security Mechanisms For Cloud Computing}
+\documentclass[sigconf]{acmart}
 
+\begin{document}
+\title{Security Mechanisms in Cloud Computing}
 
 \author{Uma M Kugan}
 \affiliation{%
   \institution{Indiana University}
+  \streetaddress{107 S. Indiana Avenue}
+  \city{Bloomington}
+  \state{Indiana}
+  \postcode{43017-6221}
 }
 \email{umakugan@iu.edu}
-
 % The default list of authors is too long for headers}
-\renewcommand{\shortauthors}{Uma}
-
+\renewcommand{\shortauthors}{Uma Kugan}
 
 \begin{abstract}
+As we all stepping into the era of "Cloud Computing", we also have to embrace
+the increase in their security concerns. It becomes very vital to find and 
+continuously develop new mechanisms to secure the cloud environment. In a 
+decentralized architecture, it is extremely difficult to secure the sensitive
+data. The computer science industry, alongside of these modern  organizations
+need to continue to develop ways to protect their infrastructure, hardware 
+and data. This paper is going to highlight the security mechanisms in Cloud
+Computing and access control in clouds and challenges related to cloud security.
 \end{abstract}
 
-\keywords{hid-sp18-513, i516, Cloud, Security}
+\keywords{Security, Cloud Computing, i524, HID513}
 
 \maketitle
 
 \section{Introduction}
+Cloud Computing is the recent buzz word, the new state of the trending 
+art technique in the current with almost all organizations are trying
+to get into. Cloud computing is regarded as a "method of running application, 
+software and storing the related data in provided computer systems and 
+providing customers or other users the access to them through the 
+Internet" ~\cite{cloud1}. Cloud Computing provides a flexible IT 
+architecture which enables companies to minimize their capital expenditure. 
+The advantages of Cloud Computing are: reduction of investment in hardware 
+and their maintenance, customer can run their business without worrying 
+about their software up-gradation and accessibility of information from 
+anywhere and their IT services. In Cloud Computing there are many service 
+models and deployment models. 
 
-\section{Cloud}
+\subsection{Service Model} These services are classified into four main categories: 
+
+\begin{description}
+
+\item[Infrastructure as a Service (IaaS)] - IaaS provides the user
+to use storage, processing, networks and other computational resources
+that enable user to run and deploy a software. EC2 is the perfect
+example ~\cite{cloud2}. 
+
+\item[Platform as a Service (PaaS)] - PaaS is a cloud environment or
+platform for developers to build cloud applications. PaaS Providers
+deliver a database, an operating system, programming language execution
+capabilities and web servers. Salesforce.com falls under this 
+category ~\cite{cloud2}.  
+
+\item[Software as a Service (SaaS] - SaaS is also referred as
+"on demand software" which is a software delivery model in which 
+software and associated data are centrally hosted on the cloud. 
+Microsoft Office 365 can be operated through browser 
+without installing the software on the local machine ~\cite{cloud2}. 
+
+\item[Function as a Service (FaaS)] - It allows to deploy function which 
+can be invoked through any event. AWS Lambda, Azure Functions, Google 
+Cloud Functions are few examples of this category.
+\end{description}
+
+\subsection{Deployment Model} There are for deployment models in Cloud
+Computing as below.
+
+\begin{description}
 
 
+\item[Private Cloud]  - The cloud infrastructure is provided for private
+use by a single organization including multiple consumers. It may be owned
+and managed by the organization and this deployment model is expensive 
+when compared to others ~\cite{cloud3}.
 
-\section{Conclusion}
+\item[Community Cloud] - The cloud infrastructure is provided for special use
+by a certain community of consumers from organizations that have  common 
+concerns. It may be owned, managed, and functioned by more than one 
+organization in the community ~\cite{cloud3}.
+
+\item[Public Cloud] - The cloud infrastructure is provided for public use by 
+the general public. It may be owned, managed, and functioned by any  profitable 
+organization, government which provides services to public users. This type 
+provides very less security and it cost less ~\cite{cloud3}.
+
+\item[Hybrid Cloud] -  The cloud infrastructure is provided for two or more cloud 
+infrastructures may be private, community, or public that stay unique  objects, 
+but they are linked together by a unified technology or proprietary technology
+that enables data and application portability ~\cite{cloud3}.
+
+  
+\end{description}
+
+\section{Cloud Computing Security}
+Cloud Computing security refers to a set of policies, technologies, 
+and controls deployed to protect data, applications, and the associated
+infrastructure of cloud computing. It is a subset of computer security, 
+network security, and, more broadly, information security. Companies that
+are planning on migrating to Cloud should be aware that they will be 
+surrendering all their private and sensitive information to a third-party
+Cloud Service provider which will put the companies to great risk. Hence, 
+companies should thoroughly understand and feel comfortable and confident
+about the various level of security that the most reliable service provider
+can provide to keep companies information and infrastructure 
+totally secure.
+The data security and privacy protection in cloud computing is similar in 
+many aspects to the traditional data security and privacy protection. 
+Cloud Computing as a multi-user, multi-tenant distributed environment brings 
+the unique security challenges, dependent on the level at which
+the user operates ~\cite{zissis2012addressing}.
+
+\subsection{Application Level} 
+Service Model, Software as a Service (SaaS) falls under this category 
+where end client applies to a person or organization who subscribes
+to a service offered by a cloud provider and is accountable for use. 
+Security requirements are: access control, privacy in multi-tenant environment, 
+data protection from exposure (remnants), communication protection, 
+software security and service availability.
+
+\subsection{Virtual Level}
+Platform as a Service (PaaS) and Infrastructure as a Service (IaaS) falls 
+under this where developer moderator applies to a person or organization 
+that deploys a software on a cloud infrastructure. 
+Security requirements are: access control,application security, data security,
+cloud management control security, secure images,virtual cloud protection 
+and communication security.
+
+\subsection{Physical Level}
+Physical data-center where owner applies to a person or organization 
+that owns the infrastructure upon which clouds are deployed. 
+Security requirements are: hardware security, legal not abusive 
+use of cloud computing, hardware reliability, network protection 
+and network resources protection.
+
+\section{Threats, Concerns and Risks of Cloud Computing}
+The level of risk in Cloud Computing depends on the type of cloud 
+architecture being considered. Security concerns of cloud computing 
+fall into two broad categories: security issues faced by cloud providers 
+(organizations providing SaaS, PaaS, IaaS via the cloud) and 
+security issues faced by their customers (companies or organizations who 
+host applications or store data on the cloud). Gartner identifies seven key
+areas of cloud security concerns ~\cite{gartner}.
+
+\subsection{Privileged User Access}
+Sensitive data processed outside the organizations expose the data to the
+highest level of risk. So when choosing the cloud service provide, it is
+very critical to get enough information on who will have access over the data
+that is being stored.
+
+\subsection{Regulatory Compliance}
+Company is responsible for their security and integrity of their data irrespective
+of where it is stored. Cloud service providers are subjected to external audits
+and security certifications ~\cite{gartner}. 
+
+\subsection{Data Location} 
+Usually cloud service providers may not disclose the location of the data.
+It is better to know check with the providers ahead to know their commitment to
+obey local privacy requirements on behalf of their customers ~\cite{gartner}.
+
+\subsection{Data Segregation} 
+Data in the cloud is typically in a shared environment alongside data from 
+other customers. Cloud service provider should share all the information
+regarding how data is encrypted and how the data is segregated.
+
+\subsection{Recovery} 
+It is very critical to know how the data will be recovered and time for restoration
+in case of any disaster. 
+
+\subsection{Investigative Support} 
+In situation where one needs to investigate, it becomes very difficult as logging 
+and data for multiple customers may be co-located.
+
+\subsection{Long-term Viability} 
+Data should be available even if the service provider is acquired by some
+other larger company.
+
+
+Based on report of ENISA (The European Network and Information Security Agency),
+we can divide the security risks of cloud computing into following three main 
+categories ~\cite{enisa} :
+
+    Policy and organizational risks: Loss of governance, compliance challenges, 
+cloud service termination or failure, cloud provider acquisition.
+
+    Technical risks: Data protection risks, isolation failure, cloud provider 
+malicious insider, intercepting data in transit, data leakage, conflict 
+between customer procedures and cloud environments.
+
+    Legal risks: These types of risks represent the security risks specific 
+for cloud computing, both from the customer and provider point of view. 
+We can also distinguish risks not specific for the cloud, such as network 
+management, network traffic, privilege escalation, social attacks, and 
+natural disasters.
+
+\section{Methods to Secure the Cloud}
+Cloud computing and storage provides vital services, poor security and 
+privacy in the cloud storage has made many users do not want to 
+upload data on the cloud. Both customer and provider are responsible in many
+different ways for the security of services. In IaaS, provider has least control
+over security as the customer takes care of end o end whereas in SaaS, provider
+has full responsibility to secure both the data and systems in the environment.
+
+\subsection{Best Practices for the Cloud Providers}
+Cloud providers should ensure, secure and isolate the environment for their 
+customers meaning users should gain access only to their environments, data
+and their applications ~\cite{vmware}. Physical data center should be properly secured 
+and access to the building should be allowed only to authorized personnel 
+using security keycard, biometric scanning protocols and round-the-clock
+interior and exterior monitoring. Each isolated network has to have proper 
+perimeter controls and policies to limit access to it.
+Host machine protection should include ~\cite{diversity} intrusion detection system 
+monitoring network and system for any malicious activities and very 
+few user accounts as possible with limited administrator access. Provider
+should not allow any unnecessary programs running on the machine and should 
+perform regular vulnerability scanning of cloud infrastructure to prepare 
+for proper mitigation strategies ~\cite{winkler}. Provider should enforce strong 
+authorization and authentication to provide the customer with secure access 
+to their data and resources. Provider should also ensure proper auditing 
+mechanisms are in place logging every time the customers or administrators
+access and use the resources. Provider should perform frequent backups of 
+data and share the details with the customer on measures taken during 
+disaster recovery ~\cite{vmware}. All API's through which the customers access
+the cloud resources with SSL, recommended to provide the secure
+communication over Internet has to be encrypted ~\cite{diversity}.
+
+\subsection{Best Practices for the Cloud Customers}
+Even though a significant amount of security responsibility falls on the 
+provider, the cloud's customers have to be aware of certain practices as well.
+
+\subsubsection{Firewalls}
+The purpose of a firewall is to prevent the unauthorized access to the local 
+computer by third parties via the Internet. Firewalls analyzes the traffic to 
+and from the local network and securing there by securing unauthorized traffic.
+As firewalls protect a customer’s own local network, it is important to ensure
+that any local network connectable to the Internet includes strong firewall 
+protection. Customers need to understand the two types of firewalls both 
+hardware and software. Hardware firewalls are properly configured to 
+correctly protect all the machines on a local networks whereas Software 
+firewalls have to be installed on individuals machines to prevent a third 
+party from taking control of the machine and to protect the customer's 
+virtual machines ~\cite{diversity}.
+
+\subsubsection{Passwords}
+Insecure passwords are considered as the weakest link in the whole
+security domain. Customer should enforce users to make sure their 
+their passwords are strong, no use of use common dictionary words 
+or words associated with the user's personal data, use the passwords
+with mix of lowercase, uppercase characters, numbers and special 
+characters, use long passwords, change passwords periodically 
+and the best use different passwords for different services ~\cite{redpaper}.
+
+\subsubsection{Patches and Backups}
+Customer has to discuss back up policies with the service provider to be 
+certain what is whose responsibility. It is always better to have some 
+third-party backup services to have the copies of the data in a case 
+of sudden data loss in the cloud services ~\cite{diversity}.
+Customers should access the impact of installing a local patch on
+functioning of their application in cloud.
+
+\subsubsection{Access Control of all Devices Connected to Cloud}
+Access to any mobile devices like laptops, mobile phones, tablets have to be 
+strictly monitored. Since they devices can be easily stolen, in case of any 
+security or data breach, administrators should ideally have the ability 
+to remotely wipe any data stored on a computer ~\cite{diversity}.
+
+\subsubsection{Virtual Machines Security}
+If the customer has signed up for IaaS cloud, where the user sets up
+everything on his own including operating system, any middle-ware
+and software. It is then the customer responsibility to ensure the
+proper security mechanisms are in place ~\cite{diversity}.
+
+\subsubsection{Data Encryption}
+The data that is shared over the cloud has to encrypted while it 
+is being transferred through shared networks. Otherwise there is a 
+potential risk of data to be lost or stolen while transferring.
+
+\section{Access control, Authorization and Delegation in Cloud Computing}
+Cloud being regarded as a large scale platform for data sharing with 
+multiple owners, multiple tenants and users, there is always increase in
+demand for fine-grained access control policies. Access control is a policy 
+or procedure that allows, denies or restricts access to a system. Most
+common models are Mandatory Access Control (MAC), Discretionary Access 
+Control (DAC) and Role Based Access Control (RBAC) ~\cite{accesscntrl}.
+
+The role-based access control (RBAC) model is the most common 
+model because of its simplicity, flexibility in capturing dynamic 
+requirements and the support for least privilege principle 
+and efficient management ~\cite{cloud3}. 
+
+Identity and Access Management (IAM) allows us to control who has access 
+to the resources in Cloud Platform project. Resources include Cloud Storage 
+buckets and objects stored within buckets. The set of access rules 
+applied to a resource is called an IAM policy. 
+
+Access control can be managed with the use of access control lists (ACL).
+In Cloud Storage, we can apply ACLs to individual buckets and objects.
+
+The struggle to maintain password security without risking noncompliance
+with data security regulations like PCI DSS or HIPAA is becoming more and
+more difficult and AAAS protocol comes into play to create safe 
+communications among cloud computing tenants in respects to its authority
+and priority ~\cite{poland}. 
+
+Attribute-based encryption (CPA-BE), is a good cryptography 
+method that provide well access control to data. It is a type of public-key 
+encryption in which the secret key of a user and the ciphertext are 
+dependent upon attributes. For instance, ciphertext are dependent on attributes 
+such as the country in which he lives, or the kind of subscription he has.
+In such a system, the decryption of a ciphertext is possible only if the set 
+of attributes of the user key matches the attributes of the ciphertext ~\cite{poland}.
+
+Security Assertion Markup Language (SAML), Extensible Access Control Markup Language
+(XACML) and web services standards helps to ensure cross-domain accesses are
+properly specified and enforced.
+
+Role mining uses the already existing system configuration data to define the roles. 
+In a cloud, users acquire different roles from different domains based on the 
+services they need. To define global policies, RBAC type systems configurations 
+can be used in conjunction with IAM and ACL to define the global roles and 
+policies.
+
+\section{Conclusions}
+Cloud computing definitely has lots of advantages such as cost effective, 
+unlimited storage capacity, much easier backup and recovery, automatic
+software integration, easy access to information and faster deployment. 
+However, flexibility has paved a way for number of security issues.
+The bigger the clouds are, the bigger the risks and responsibilities are. 
+There exists a much greater need for proper security measures.
+Cloud Computing security lies in the hands of both the consumers and their
+service providers and both of them working together can significantly 
+develop more secure way of delivering cloud computing than traditional 
+approaches. In this paper, we presented guidance on cloud computing security,
+their challenges and their best practices for both provides and consumers.
 
 \begin{acks}
-  The author would like to thank Dr. Gregor von Laszewski for his
-  support and suggestions to write this paper.
-
+The author would like to thank Dr. Gregor von Laszewski for his support and 
+suggestions in writing this paper.
 \end{acks}
 
 \bibliographystyle{ACM-Reference-Format}
-\bibliography{report} 
+\bibliography{report}
+
+\end{document}
+
