@@ -87,7 +87,24 @@ The LocalForward option in the OpenSSH client configuration file can be used to
 configure forwarding without having to specify it on command line.
 
 ## Remote Port Forwarding
+Remote port forwarding is the exact opposite of local port forwarding. It 
+forwards traffic coming to a port on your server to your local computer, and
+then it is sent to a destination.
 
+## Dynamic Port Forwarding
+Dynamic port forwarding turns your SSH client into a SOCKS proxy server. 
+SOCKS is a little-known but widely-implemented protocol for programs to request
+any Internet connection through a proxy server. Each program that uses the proxy
+server needs to be configured specifically, and reconfigured when you stop using
+the proxy server.
+
+		ssh -D 5000 user@clodcomputing.com
+		
+The SSH client creates a SOCKS proxy at port 5000 on your local computer. Any 
+traffic sent to this port is sent to its destination through the SSH server.
+
+Next, you’ll need to configure your applications to use this server. 
+The “Settings” section of most web browsers allow you to use a SOCKS proxy.
 
 
 
