@@ -89,8 +89,30 @@ configure forwarding without having to specify it on command line.
 ## Remote Port Forwarding
 Remote port forwarding is the exact opposite of local port forwarding. It 
 forwards traffic coming to a port on your server to your local computer, and
-then it is sent to a destination.
+then it is sent to a destination. The first argument should be the remote 
+port where traffic will be directed on the remote system. The second argument 
+should be the address and port to point the traffic to when it arrives on the 
+local system.
 
+		ssh -R 9000:localhost:3000 user@clodcomputing.com
+		
+SSH does not by default allow remote hosts to forwarded ports. To enable
+remote forwarding add the following to :  /etc/ssh/sshd_config 
+
+		GatewayPorts yes
+
+
+	$ sudo vim /etc/ssh/sshd_config
+
+and restart SSH
+
+	$ sudo service ssh restart
+	
+After above steps you should be able to connect to the server remotely, 
+even from your local machine. ssh -R first creates an SSH tunnel that 
+forwards traffic from the server on port 9000 to your local machine 
+on port 3000.
+		
 ## Dynamic Port Forwarding
 Dynamic port forwarding turns your SSH client into a SOCKS proxy server. 
 SOCKS is a little-known but widely-implemented protocol for programs to request
