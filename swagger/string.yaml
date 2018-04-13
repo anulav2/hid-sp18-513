@@ -1,0 +1,163 @@
+swagger: "2.0"
+info:
+  description: "This is a simple service that will recieve a string in the query param and process the string to deliver the desired result.
+  \n Note: character limitation is 50"
+  version: "1.0.0"
+  title: "String Prcessing Center"
+  termsOfService: "http://swagger.io/terms/"
+  contact:
+    email: "rashray@iu.edu"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "localhost:8080"
+basePath: "/cloudmesh"
+tags:
+- name: "Strings"
+  description: "String queries are processed here"
+paths:
+  /addString:
+    get:
+      tags:
+      - "Strings"
+      summary: "Add the string"
+      description: "This method will add the string from the query param to the data collection"
+      operationId: "addStr"
+      consumes:
+      - "string"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "query"
+        name: "str"
+        type: "string"
+        description: "The string to be processed"
+        required: true
+  
+      responses:
+        200:
+          description: "Successfully processed the string"
+        405:
+          description: "Please enter a valid string"
+        401:
+          description: "String length geater than limit"
+  /fetchString:
+    get:
+      tags:
+      - "Strings"
+      summary: "Get the string by id"
+      description: "This method fetch the string by id"
+      operationId: "fetchStr"
+      consumes:
+      - "string"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "query"
+        name: "id"
+        type: "string"
+        description: "The string to be processed"
+        required: true
+  
+      responses:
+        200:
+          description: "Successfully processed the string"
+        405:
+          description: "Please enter a valid string"
+        401:
+          description: "String length geater than limit"
+  /parseString:
+    get:
+      tags:
+      - "Strings"
+      summary: "List 1. all the unique characters; 2. numeric digits count"
+      description: "Get all the unique characters in the string listed in an array and the total number of numeric digits in the string"
+      operationId: "parseStr"
+      consumes:
+      - "string"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "query"
+        name: "str"
+        type: "string"
+        description: "The string to be processed"
+        required: true
+  
+      responses:
+        200:
+          description: "Successfully processed the string"
+        405:
+          description: "Please enter a valid string"
+        401:
+          description: "String length geater than limit"
+  /getMatchData:
+    get:
+      tags:
+      - "Strings"
+      summary: "String Match"
+      description: "Find the matching data of two strings"
+      operationId: "matchStr"
+      consumes:
+      - "string"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "query"
+        name: "subStr"
+        type: "string"
+        description: "The string to be matched"
+        required: true
+      - in: "query"
+        name: "str"
+        type: "string"
+        description: "The string to be processed"
+        required: true
+  
+      responses:
+        200:
+          description: "Successfully processed the string"
+        405:
+          description: "Please enter a valid string"
+        401:
+          description: "String length geater than limit"
+  
+  /replaceString:
+    get:
+      tags:
+      - "Strings"
+      summary: "Replace one old str with the new one"
+      description: "Replace the old str with the new one with in a new string."
+      operationId: "replaceStr"
+      consumes:
+      - "string"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "query"
+        name: "oldStr"
+        type: "string"
+        description: "Sub string to be replaced"
+        required: true
+      
+      - in: "query"
+        name: "newStr"
+        type: "string"
+        description: "Sub string replacing the old value"
+        required: true
+      
+      - in: "query"
+        name: "str"
+        type: "string"
+        description: "The string to be processed"
+        required: true
+  
+      responses:
+        200:
+          description: "Successfully processed the string"
+        405:
+          description: "Atleast one substr is bigger than the parent"
+        401:
+          description: "String length geater than limit"
+      
+    
