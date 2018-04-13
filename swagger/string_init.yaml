@@ -1,0 +1,58 @@
+swagger: "2.0"
+info:
+  description: "This is a simple service that will recieve a string in the query param and process the string to deliver the desired result.
+  \n Note: character limitation is 50"
+  version: "1.0.0"
+  title: "String Prcessing Center"
+  termsOfService: "http://swagger.io/terms/"
+  contact:
+    email: "rashray@iu.edu"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "localhost:8080"
+basePath: "/v2"
+tags:
+- name: "Strings"
+  description: "String queries are processed here"
+paths:
+  '/addString/{str}':
+      get:
+        parameters:
+          - name: str
+            in: path
+            type: string
+            description: String to be added
+            required: true
+        responses:
+          '200':
+            description: Final OutPut
+            schema:
+              $ref: '#/definitions/OUTPUT'
+  '/fetchString/{id}':
+    get:
+        parameters:
+          - name: id
+            in: path
+            type: string
+            description: id for which string to be retreived
+            required: true
+        responses:
+          '200':
+            description: Final OutPut
+            schema:
+              $ref: '#/definitions/OUTPUT'
+          400:
+            description: "Bad request."
+          404:
+            description: "Not Found."
+    
+definitions:
+  OUTPUT:
+    type: object
+    required:
+      - finalstring
+    properties:
+      finalstring:
+        type: string
+      
