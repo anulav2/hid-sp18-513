@@ -1,48 +1,47 @@
 import connexion
 import six
-import csv
 
-from swagger_server.models.output import OUTPUT  # noqa: E501
+from swagger_server.models.cpu import CPU  # noqa: E501
+from swagger_server.models.disk import DISK  # noqa: E501
+from swagger_server.models.ram import RAM  # noqa: E501
 from swagger_server import util
+import os, platform, subprocess, re, psutil
+
+def get_cpu_info():
+    print "Hello"
+    processordata = {
+       "ProcessorName": platform.processor(),
+       "System Name": platform.system(),
+       "Version": platform.version(),
+       "Node": platform.node(),
+       "Release": platform.release()
+    }
+    return (processordata)
+
+def get_disk_info():
+    diskdata = {
+       "Disk Size": psutil.disk_usage('/').total,
+       "Disk Free": psutil.disk_usage('/').available,
+       "Disk Used": psutil.disk_usage('/').used
+    }
+    return (diskdata)
+
+def get_ram_info():
+    ramdata = {
+       "Total Ram": psutil.virtual_memory().total,
+       "Ram Free": psutil.virtual_memory().available,
+       "Ram Used": psutil.virtual_memory().used
+    }
+    return (ramdata)
+
+def cpu_get():  # noqa: E501
+    return get_cpu_info()
 
 
-def add_string_str_get(str):  # noqa: E501
-    """add_string_str_get
-
-     # noqa: E501
-
-    :param str: String to be added
-    :type str: str
-
-    :rtype: OUTPUT
-    """
-    with open('data/data.csv') as f:
-        reader = csv.reader(f)
-        rowCount = len(list(reader))
-
-    with open('data/data.csv', 'a') as csvfile:
-       writer = csv.writer(csvfile)
-       writer.writerow([rowCount, str])
-    rowList = []
-    with open('data/data.csv') as f:
-        reader = csv.reader(f)
-        for row in reader:
-            rowList.append(row) 
-    
-    return rowList
+def disk_get():  # noqa: E501
+    return get_disk_info()
 
 
-def fetch_string_id_get(id):  # noqa: E501
-    """fetch_string_id_get
+def ram_get():  # noqa: E501
+    return get_ram_info()
 
-     # noqa: E501
-
-    :param id: id for which string to be retreived
-    :type id: str
-
-    :rtype: OUTPUT
-    """
-    with open('data/data.csv', 'r') as the_file:
-        reader = csv.reader(the_file)
-        line = next((x for i, x in enumerate(reader) if i == int(id)), None)
-    return line
