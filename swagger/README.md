@@ -1,50 +1,134 @@
-## Swagger Rest API Assignment
-This swagger API exploits CSV storage [/data/data.csv] to store and retrieve string data.
- 
- ### Specification:
- * String_init.yaml
- 
- ### Setup:
- * gitclone the codebase
- * MakeFile provided will generate the required code using the following command:
-    * `make service`
-    This is install the necessary folder origanization needed for swagger rest API
-    * `make run`
-    This will run the Flask server at localhost:8080. To make sure the setup is up and running you should see the following massage in       the console:
-    ``` 
-     Running on http://0.0.0.0:8080/ (Press CTRL+C to quit)
-    ```
-    * Now you can test the API either by system bowser or using the following command in a separate console window:
-        `make test`
-    * Once done testing the server can be stopped using cntrl+c on the console showing the server logs or by running the following the         separate broswer console: 
-       `make stop`
-    * finally the following command will clean the created folder structure for the API testing:
-       `make clean`
-    * for the docker image:
-      `make container`
-    * To run the service:
-    'sudo docker exec -it <containerID> bash'
- 
- ### End-points:
- #### basepath is /v2
- * /addString/{str} : This method will add the string from the query param to the data collection. and display the current collection of rows in the CSV.
-  ``` 
-  http://localhost:8080/v2/addString/String to added here
- 
-  #### Output:
-  [{
-  1,string
-  },
-  {
-  2, row 2
-  ...}]
-   ```
+## Swagger Codegen API to get CPU, DISK and RAM Info
+  
+* Three API endpoints are provided.
 
-* /fetchString/{id} : This method fetch the string by id and displays the row
-  ``` 
-  http://localhost:8080/v2/addString/2
-  #### Output:
-  {
-  2, row 2
-  }
-   ``` 
+  * ```/api/cpu```
+  
+  * ```/api/disk```
+  
+  * ```/api/ram```
+  
+ 
+## Instructions for docker installation
+
+* git clone the project.
+
+* you should install docker.
+
+* change the directory to **swagger** folder.
+
+* Build the image from docker file
+
+	* ``` make docker-build ```
+
+* Start the service using following make command
+  
+  * ```make docker-start```
+
+* Test the service using following curl commands
+  
+  
+  * ```curl -H "Content-Type:application/json" -X GET http://localhost:8080/api/cpu```
+  
+  * ```curl -H "Content-Type:application/json" -X GET http://localhost:8080/api/disk```     
+  
+  * ```curl http://127.0.0.1:8080/api/ram```
+
+  
+* Get the container ID using following command
+  
+  * ```docker ps```
+
+* Stop the service using following commands
+  
+  * ```make docker-stop```
+
+* Optional starting mechanism (interactive mode)
+  
+  * ```make start``` 
+  
+  * ```make stop```
+	
+## Instructions for ubuntu without docker
+
+* you should be running this program in python 2 environment.
+
+* you should have default-jre installed.
+
+* git clone the project.
+
+* change the directory to swagger folder
+
+* Ensure Python 2 environment is activated
+
+	* ``` pyenv activate env2 (Refer handbook for details ```
+
+* create the swagger server with following command
+  
+  * ```make service```
+
+* run the swagger server with following command
+  
+  * ```make start```
+
+* test the program using following command
+  
+  * ```make test-cpu```
+  
+  * ```make test-disk```
+  
+  * ```make test-ram```
+
+* stop the service using following command
+  
+  * ```make stop```
+
+* clean the server and client codes using following command
+  
+  * ```make clean```
+
+## API informations : Data Services
+
+### End Point : api/cpu
+  
+  * This endpoint gets the processor and system  information
+ 
+  * Sample curl request
+  
+	  ```curl -H "Content-Type:application/json" -X GET http://localhost:8080/api/cpu ```
+  
+  * Sample json response for GET request 
+  
+	```
+
+
+	```
+
+### End Point : api/disk
+  
+  * The endpoint returns disk information 
+  
+  * Sample curl request
+  
+	  ```curl -H "Content-Type:application/json" -X GET http://localhost:8080/api/disk ```
+ 
+  * Sample json response for GET request
+  
+	```
+	
+
+	```
+### End Point : api/ram
+
+* The endpoint returns RAM information. 
+
+* Sample curl request
+	  
+	  ``` curl -H "Content-Type:application/json" -X GET http://localhost:8080/api/ram ```
+
+ * Sample json response for GET request
+ 	
+ 	``` 
+ 	
+
+	```
