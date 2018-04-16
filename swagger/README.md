@@ -32,7 +32,7 @@
   
   * ```curl -H "Content-Type:application/json" -X GET http://localhost:8080/api/disk```     
   
-  * ```curl http://127.0.0.1:8080/api/ram```
+  * ```curl -H "Content-Type:application/json" -X GET http://localhost:8080/api/ram```
 
   
 * Get the container ID using following command
@@ -100,7 +100,11 @@
   * Sample json response for GET request 
   
 	```
-
+		Node		"gani-VirtualBox"
+		ProcessorName	"x86_64"
+		Release		"4.10.0-28-generic"
+		System Name	"Linux"
+		Version		"#32~16.04.2-Ubuntu SMP Thu Jul 20 10:19:48 UTC 2017"
 
 	```
 
@@ -115,7 +119,9 @@
   * Sample json response for GET request
   
 	```
-	
+		Disk Free	3112087552
+		Disk Size	9376751616
+		Disk Used	5764755456
 
 	```
 ### End Point : api/ram
@@ -129,6 +135,8 @@
  * Sample json response for GET request
  	
  	``` 
- 	
+ 		Ram Free	126672896
+		Ram Used	748265472
+		Total Ram	1038098432
 
 	```
