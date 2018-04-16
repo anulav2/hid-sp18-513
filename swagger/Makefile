@@ -1,5 +1,5 @@
 SWAGGER_CODEGEN=java -jar swagger-codegen-cli.jar
-YML=Iris.yaml
+YML=sysinfo.yaml
 HOME=server
 CLIENT=client
 CONFIG=$(HOME)/config
