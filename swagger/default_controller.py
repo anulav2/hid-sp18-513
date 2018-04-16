@@ -8,7 +8,6 @@ from swagger_server import util
 import os, platform, subprocess, re, psutil
 
 def get_cpu_info():
-    print "Hello"
     processordata = {
        "ProcessorName": platform.processor(),
        "System Name": platform.system(),
@@ -19,10 +18,11 @@ def get_cpu_info():
     return (processordata)
 
 def get_disk_info():
+    disk_usage = psutil.disk_usage('/')
     diskdata = {
-       "Disk Size": psutil.disk_usage('/').total,
-       "Disk Free": psutil.disk_usage('/').available,
-       "Disk Used": psutil.disk_usage('/').used
+       "Disk Size": disk_usage.total,
+       "Disk Free": disk_usage.free,
+       "Disk Used": disk_usage.used
     }
     return (diskdata)
 
