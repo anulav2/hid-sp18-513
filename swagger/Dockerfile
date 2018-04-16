@@ -1,6 +1,6 @@
 FROM python:2.7
 
-MAINTAINER Uma M Kugan <ukugan@iu.edu>
+MAINTAINER Uma M Kugan <umakugan@iu.edu>
 
 # Setup java 
 RUN apt-get update
