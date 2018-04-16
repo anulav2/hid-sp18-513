@@ -1,0 +1,82 @@
+swagger: "2.0"
+info: 
+  version: "1.0.0"
+  title: "CPU, DISK and RAM Info"
+  description: "A simple service to get CPU, DISK and RAM INFO using swagger-2.0 specification and codegen"
+  termsOfService: "http://swagger.io/terms/"
+  contact: 
+    name: "Uma M Kugan"
+    email: ukugan@iu.edu
+  license: 
+    name: "Apache"
+host: "localhost:8080"
+basePath: "/api"
+schemes: 
+  - "http"
+consumes: 
+  - "application/json"
+produces: 
+  - "application/json"
+paths: 
+  /cpu:
+    get: 
+      description: "Returns CPU Information of the Hosting Server"
+      produces: 
+        - "application/json"
+      responses: 
+        "200":
+          description: "CPU Info"
+          schema: 
+            $ref: "#/definitions/CPU"
+        "400":
+          description: Unexpected error while getting CPU info
+  /disk:
+    get: 
+      description: "Returns DISK Information of the Hosting Server"
+      produces: 
+        - "application/json"
+      responses: 
+        "200":
+          description: "DISK Info"
+          schema: 
+            $ref: "#/definitions/DISK"
+        "400":
+          description: Unexpected error while getting DISK info
+  /ram:
+    get: 
+      description: "Returns RAM Information of the Hosting Server"
+      produces: 
+        - "application/json"
+      responses: 
+        "200":
+          description: "RAM Info"
+          schema: 
+            $ref: "#/definitions/RAM"
+        "400":
+          description: Unexpected error while getting RAM info
+  
+definitions:
+  CPU:
+    type: "object"
+    required: 
+      - "model"
+    properties: 
+      model:
+        type: "string"
+        
+  DISK:
+    type: "object"
+    required: 
+      - "model"
+    properties: 
+      model:
+        type: "string"
+  
+  RAM:
+    type: "object"
+    required: 
+      - "model"
+    properties: 
+      model:
+        type: "string"
+  
