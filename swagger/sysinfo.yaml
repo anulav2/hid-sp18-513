@@ -6,7 +6,7 @@ info:
   termsOfService: "http://swagger.io/terms/"
   contact: 
     name: "Uma M Kugan"
-    email: ukugan@iu.edu
+    email: umakugan@iu.edu
   license: 
     name: "Apache"
 host: "localhost:8080"
