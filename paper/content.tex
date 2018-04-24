@@ -124,9 +124,9 @@ the user operates~\cite{hid-sp18-513-zissis2012addressing}.
 Service Model, Software as a Service (SaaS) falls under this category 
 where end client applies to a person or organization who subscribes
 to a service offered by a cloud provider and is accountable for use. 
-Security requirements are: access control, privacy in multi-tenant environment, 
-data protection from exposure (remnants), communication protection, 
-software security and service availability.
+Security requirements are: access control, privacy in multi-tenant 
+environment, data protection from exposure (remnants), 
+communication protection, software security and service availability.
 
 \subsection{Virtual Level}
 Platform as a Service (PaaS) and Infrastructure as a Service (IaaS) falls 
@@ -159,14 +159,15 @@ very critical to get enough information on who will have access over the data
 that is being stored.
 
 \subsection{Regulatory Compliance}
-Company is responsible for their security and integrity of their data irrespective
-of where it is stored. Cloud service providers are subjected to external audits
-and security certifications~\cite{hid-sp18-513-gartner}. 
+Company is responsible for their security and integrity of their data 
+irrespective of where it is stored. Cloud service providers are subjected
+to external audits and security certifications~\cite{hid-sp18-513-gartner}. 
 
 \subsection{Data Location} 
 Usually cloud service providers may not disclose the location of the data.
 It is better to know check with the providers ahead to know their commitment to
-obey local privacy requirements on behalf of their customers~\cite{hid-sp18-513-gartner}.
+obey local privacy requirements on behalf of their customers
+~\cite{hid-sp18-513-gartner}.
 
 \subsection{Data Segregation} 
 Data in the cloud is typically in a shared environment alongside data from 
@@ -174,24 +175,24 @@ other customers. Cloud service provider should share all the information
 regarding how data is encrypted and how the data is segregated.
 
 \subsection{Recovery} 
-It is very critical to know how the data will be recovered and time for restoration
-in case of any disaster. 
+It is very critical to know how the data will be recovered and time for 
+restoration in case of any disaster. 
 
 \subsection{Investigative Support} 
-In situation where one needs to investigate, it becomes very difficult as logging 
-and data for multiple customers may be co-located.
+In situation where one needs to investigate, it becomes very difficult 
+as logging and data for multiple customers may be co-located.
 
 \subsection{Long-term Viability} 
-Data should be available even if the service provider is acquired by some
-other larger company.
+Data should be available even if the service provider is acquired 
+by some other larger company.
 
 
-Based on report of ENISA (The European Network and Information Security Agency),
-we can divide the security risks of cloud computing into following three main 
-categories~\cite{hid-sp18-513-enisa} :
+Based on report of ENISA (The European Network and Information 
+Security Agency), we can divide the security risks of cloud computing
+into following three main categories~\cite{hid-sp18-513-enisa} :
 
-    Policy and organizational risks: Loss of governance, compliance challenges, 
-cloud service termination or failure, cloud provider acquisition.
+    Policy and organizational risks: Loss of governance, compliance 
+challenges, cloud service termination or failure, cloud provider acquisition.
 
     Technical risks: Data protection risks, isolation failure, cloud provider 
 malicious insider, intercepting data in transit, data leakage, conflict 
@@ -206,33 +207,37 @@ natural disasters.
 \section{Methods to Secure the Cloud}
 Cloud computing and storage provides vital services, poor security and 
 privacy in the cloud storage has made many users do not want to 
-upload data on the cloud. Both customer and provider are responsible in many
-different ways for the security of services. In IaaS, provider has least control
-over security as the customer takes care of end o end whereas in SaaS, provider
-has full responsibility to secure both the data and systems in the environment.
+upload data on the cloud. Both customer and provider are responsible in 
+many different ways for the security of services. In IaaS, provider has
+least control over security as the customer takes care of end o end 
+whereas in SaaS, provider has full responsibility to secure both the 
+data and systems in the environment.
 
 \subsection{Best Practices for the Cloud Providers}
 Cloud providers should ensure, secure and isolate the environment for their 
 customers meaning users should gain access only to their environments, data
-and their applications~\cite{hid-sp18-513-vmware}. Physical data center should be properly secured 
-and access to the building should be allowed only to authorized personnel 
-using security keycard, biometric scanning protocols and round-the-clock
-interior and exterior monitoring. Each isolated network has to have proper 
-perimeter controls and policies to limit access to it.
-Host machine protection should include~\cite{hid-sp18-513-diversity} intrusion detection system 
+and their applications~\cite{hid-sp18-513-vmware}. Physical data center 
+should be properly secured and access to the building should be allowed 
+only to authorized personnel using security keycard, biometric scanning
+protocols and round-the-clock interior and exterior monitoring. Each
+isolated network has to have proper perimeter controls and policies to
+limit access to it. Host machine protection should 
+include~\cite{hid-sp18-513-diversity} intrusion detection system 
 monitoring network and system for any malicious activities and very 
-few user accounts as possible with limited administrator access. Provider
-should not allow any unnecessary programs running on the machine and should 
-perform regular vulnerability scanning of cloud infrastructure to prepare 
-for proper mitigation strategies~\cite{hid-sp18-513-winkler}. Provider should enforce strong 
-authorization and authentication to provide the customer with secure access 
-to their data and resources. Provider should also ensure proper auditing 
-mechanisms are in place logging every time the customers or administrators
-access and use the resources. Provider should perform frequent backups of 
-data and share the details with the customer on measures taken during 
-disaster recovery~\cite{hid-sp18-513-vmware}. All API's through which the customers access
-the cloud resources with SSL, recommended to provide the secure
-communication over Internet has to be encrypted~\cite{hid-sp18-513-diversity}.
+few user accounts as possible with limited administrator access. 
+Provider should not allow any unnecessary programs running on the machine
+and should perform regular vulnerability scanning of cloud infrastructure
+to prepare for proper mitigation strategies~\cite{hid-sp18-513-winkler}. 
+Provider should enforce strong authorization and authentication to 
+provide the customer with secure access to their data and resources.
+Provider should also ensure proper auditing mechanisms are in place
+logging every time the customers or administrators access and use the
+resources. Provider should perform frequent backups of data and share
+the details with the customer on measures taken during 
+disaster recovery~\cite{hid-sp18-513-vmware}. All API's through which
+the customers access the cloud resources with SSL, recommended to
+provide the secure communication over Internet has to be
+encrypted~\cite{hid-sp18-513-diversity}.
 
 \subsection{Best Practices for the Cloud Customers}
 Even though a significant amount of security responsibility falls on the 
@@ -258,27 +263,32 @@ their passwords are strong, no use of use common dictionary words
 or words associated with the user's personal data, use the passwords
 with mix of lowercase, uppercase characters, numbers and special 
 characters, use long passwords, change passwords periodically 
-and the best use different passwords for different services~\cite{hid-sp18-513-redpaper}.
+and the best use different passwords for different 
+services~\cite{hid-sp18-513-redpaper}.
 
 \subsubsection{Patches and Backups}
-Customer has to discuss back up policies with the service provider to be 
-certain what is whose responsibility. It is always better to have some 
-third-party backup services to have the copies of the data in a case 
-of sudden data loss in the cloud services~\cite{hid-sp18-513-diversity}.
-Customers should access the impact of installing a local patch on
-functioning of their application in cloud.
+Customer has to discuss back up policies with the service provider 
+to be certain what is whose responsibility. It is always better to 
+have some third-party backup services to have the copies of the 
+data in a case of sudden data loss in the cloud 
+services~\cite{hid-sp18-513-diversity}. Customers should access
+the impact of installing a local patch on functioning of their
+application in cloud.
 
 \subsubsection{Access Control of all Devices Connected to Cloud}
-Access to any mobile devices like laptops, mobile phones, tablets have to be 
-strictly monitored. Since they devices can be easily stolen, in case of any 
-security or data breach, administrators should ideally have the ability 
-to remotely wipe any data stored on a computer~\cite{hid-sp18-513-diversity}.
+Access to any mobile devices like laptops, mobile phones, tablets 
+have to be strictly monitored. Since they devices can be easily
+stolen, in case of any security or data breach, administrators
+should ideally have the ability to remotely wipe any data
+stored on a computer~\cite{hid-sp18-513-diversity}.
 
 \subsubsection{Virtual Machines Security}
-If the customer has signed up for IaaS cloud, where the user sets up
-everything on his own including operating system, any middle-ware
-and software. It is then the customer responsibility to ensure the
-proper security mechanisms are in place~\cite{hid-sp18-513-diversity}.
+If the customer has signed up for IaaS cloud, where the user
+sets up everything on his own including operating system,
+any middle-ware and software. It is then the customer
+responsibility to ensure the proper security mechanisms
+are in place~\cite{hid-sp18-513-diversity}.
+
 \subsubsection{Data Encryption}
 The data that is shared over the cloud has to encrypted while it 
 is being transferred through shared networks. Otherwise there is a 
@@ -286,48 +296,53 @@ potential risk of data to be lost or stolen while transferring.
 
 \section{Access control, Authorization and Delegation in Cloud Computing}
 Cloud being regarded as a large scale platform for data sharing with 
-multiple owners, multiple tenants and users, there is always increase in
-demand for fine-grained access control policies. Access control is a policy 
-or procedure that allows, denies or restricts access to a system. Most
-common models are Mandatory Access Control (MAC), Discretionary Access 
-Control (DAC) and Role Based Access Control (RBAC)~\cite{hid-sp18-513-accesscntrl}.
+multiple owners, multiple tenants and users, there is always increase
+in demand for fine-grained access control policies. Access control is
+a policy or procedure that allows, denies or restricts access to a
+system. Most common models are Mandatory Access Control (MAC),
+Discretionary Access Control (DAC) and Role Based Access Control
+(RBAC)~\cite{hid-sp18-513-accesscntrl}.
 
 The role-based access control (RBAC) model is the most common 
 model because of its simplicity, flexibility in capturing dynamic 
 requirements and the support for least privilege principle 
 and efficient management~\cite{hid-sp18-513-cloud3}. 
 
-Identity and Access Management (IAM) allows us to control who has access 
-to the resources in Cloud Platform project. Resources include Cloud Storage 
-buckets and objects stored within buckets. The set of access rules 
-applied to a resource is called an IAM policy. 
+Identity and Access Management (IAM) allows us to control who has 
+access to the resources in Cloud Platform project. Resources 
+include Cloud Storage buckets and objects stored within buckets.
+The set of access rules applied to a resource is called 
+an IAM policy. 
 
-Access control can be managed with the use of access control lists (ACL).
-In Cloud Storage, we can apply ACLs to individual buckets and objects.
+Access control can be managed with the use of access control 
+lists (ACL). In Cloud Storage, we can apply ACLs to individual
+buckets and objects.
 
-The struggle to maintain password security without risking noncompliance
-with data security regulations like PCI DSS or HIPAA is becoming more and
-more difficult and AAAS protocol comes into play to create safe 
-communications among cloud computing tenants in respects to its authority
+The struggle to maintain password security without risking 
+noncompliance with data security regulations like PCI DSS 
+or HIPAA is becoming more and more difficult and AAAS protocol
+comes into play to create safe communications among cloud 
+computing tenants in respects to its authority
 and priority~\cite{hid-sp18-513-poland}. 
 
 Attribute-based encryption (CPA-BE), is a good cryptography 
-method that provide well access control to data. It is a type of public-key 
-encryption in which the secret key of a user and the ciphertext are 
-dependent upon attributes. For instance, ciphertext are dependent on attributes 
-such as the country in which he lives, or the kind of subscription he has.
-In such a system, the decryption of a ciphertext is possible only if the set 
-of attributes of the user key matches the attributes of the ciphertext~\cite{hid-sp18-513-poland}.
+method that provide well access control to data. It is a type of 
+public-key encryption in which the secret key of a user and the 
+ciphertext are dependent upon attributes. For instance, ciphertext
+are dependent on attributes such as the country in which he lives,
+or the kind of subscription he has. In such a system, the decryption
+of a ciphertext is possible only if the set of attributes of the user
+key matches the attributes of the ciphertext~\cite{hid-sp18-513-poland}.
 
-Security Assertion Markup Language (SAML), Extensible Access Control Markup Language
-(XACML) and web services standards helps to ensure cross-domain accesses are
-properly specified and enforced.
+Security Assertion Markup Language (SAML), Extensible Access Control
+Markup Language (XACML) and web services standards helps to ensure
+cross-domain accesses are properly specified and enforced.
 
-Role mining uses the already existing system configuration data to define the roles. 
-In a cloud, users acquire different roles from different domains based on the 
-services they need. To define global policies, RBAC type systems configurations 
-can be used in conjunction with IAM and ACL to define the global roles and 
-policies.
+Role mining uses the already existing system configuration data to
+define the roles. In a cloud, users acquire different roles from
+different domains based on the services they need. To define global 
+policies, RBAC type systems configurations can be used in conjunction
+with IAM and ACL to define the global roles and policies.
 
 \section{Conclusions}
 Cloud computing definitely has lots of advantages such as cost effective, 
