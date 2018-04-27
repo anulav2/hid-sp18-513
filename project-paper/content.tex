@@ -1,6 +1,12 @@
 % status: 2
 % chapter: Security
 
+% status: 0
+% chapter: Security
+
+\documentclass[sigconf]{acmart}
+
+\begin{document}
 \title{Service for Managing the Public Key}
 
 \author{Uma M Kugan}
@@ -31,9 +37,6 @@ public key.
 \maketitle
 
 \section{Introduction}
-
-\TODO{You need citations \cite{one}}
-
 SSH is a way for anyone to connect to any servers in a more secured way. 
 Any information that is exchanged between host computer to the server is encrypted
 which prevents someone from snooping the data. There are two ways by which user
@@ -60,57 +63,277 @@ to guess what the key Is and try to attack the server by forging your identity.
 One of the main issues is that IT admins have to spend a lot of time visiting 
 each server, changing out the private keys then go back to each user and have 
 them make changes on their laptop. The rest api provides the easier solution to
-exchange keys between the servers.
+exchange keys between the servers ~\cite{hid-sp18-513-ylonen2013user}.
 
-Technology : Python, Swagger, Rest API
+\section{How SSH Works}
+SSH uses a client-server model of computing, allowing users to establish
+secure communications between two hosts, whether UNIX, Windows
+or virtually anything else. SSH is also increasingly important as the use
+of cloud computing grows, helping organizations limit exposure while
+connecting to a cloud-based virtual machine over the Internet by providing
+a local gateway-style system via an SSH endpoint.
+The server enables incoming SSH connections to a host and handles user
+authentication, authorization and related tasks. The client connects to an
+SSH server and makes requests after authenticating to the server. 
+An SSH session is the ongoing connection between a client and a server begins
+after the client successfully authenticates to a server and ends when the
+connection terminates. Once the system authenticates a user, one or more
+channels may be opened within the connection, with each channel acting
+as an individual data link and separate pathway for information
+~\cite{hid-sp18-513-sans}.
 
-To add users who do not have SSH keys, generate a new SSH key for each new user.
 
-To add users who have existing SSH keys, locate the public SSH key file for each user.
+\section{Role of Secure Shell}
+The Secure Shell (SSH) protocol, developed in the mid-1990s, and it  
+used everywhere both in traditional and virtual environments to 
+authenticate Unix users and their applications to remote, 
+internal systems and encrypt the resulting session traffic. 
+In order to authenticate, an user or an application must share
+its private SSH key file to a target system that possesses its 
+corresponding public SSH key file. 
+Once the key pair is validated, the user or application is granted 
+access to the protected account. In effect, this means that any user
+or application with access to a private key may access any target 
+system such as Unix and Linux systems, virtual machines, network 
+devices, or file transfer solutions that contains the corresponding
+public key.
+In a one-to-many environment, in which one private SSH key is used 
+to attain privileged access to many target systems, organizations 
+can no longer afford to ignore these privileged private keys. 
+To protect the heart of the enterprise,organizations must 
+proactively secure and manage all of their privileged account 
+credentials, including both passwords and SSH keys, to achieve
+consistent, comprehensive protection against advanced 
+attacks~\cite{hid-sp18-513-cyberark}
 
-Once public key is located, we should add those key to authorized keys 
-to target server.
+\section{SSH Keys: The Hidden Credentials} 
+SSH keys are always the major concern to security teams because 
+these credentials can be easily created, and are then difficult to
+track, manage or control. In any environment without any proper
+controls in place, any user with access to any machine can generate
+an SSH key pair that will forever grant that user direct access to
+the system. And, because there is no built-in oversight to SSH keys,
+no one may ever know. Further, because SSH is commonly used in 
+automated application to application authentication,
+SSH key pairs can be generated, distributed and never thought of again, 
+leaving applications and application servers vulnerable to attacks 
+using unmanaged, outdated SSH keys~\cite{hid-sp18-513-cyberark}. 
+In the enterprise environment with hundreds of IT users and 
+thousands of systems managing the SSH challenge becomes exponential. 
+A large enterprise may have thousands or even millions of valid 
+SSH key pairs, many of which may no longer be needed by authorized 
+users or applications. As a result, attackers can exploit this 
+vulnerability and gain privileged access to critical systems. 
+Without central management or knowledge of who 
+is accessing what, organizations cannot see where their risks and
+vulnerabilities lie much less take action to address them
+~\cite{hid-sp18-513-cyberark}. 
 
-There are two options :
+\section{SSH Keys Vulnerabilities}
+Vulnerabilities with SSH range from weaknesses in the protocol
+itself to configuration, implementation and management 
+complexities that can lead to dangerous mistakes.
+Poor SSH key management practices can result in compromise 
+of administrative privileges, expanded breadth of attack surfaces
+and other issues that could easily be avoided by proper training
+and more effective processes backed by automation and tools
+~\cite{hid-sp18-513-sans}.
 
-1. Login should exist in both the server - straight forward as the user exist 
-         in both source and target server.
+\subsection{Configuration Issue}
+Application developers must learn how to keep both configuration
+and private key files secure. With these files, a malicious 
+individual can easily impersonate an authorized
+user (or host) and easily connect to a remote host and application.
+Before deploying any new devices in a networked environment,
+it is always the best practice to change default passwords
+for all applications, operating systems, routers, firewalls
+and all other systems~\cite{hid-sp18-513-sans}.
 
-2. If the login does not exist,
-        - We need an api to get username, host, port and pub key from source
-            and user, host and port for target
-        
-3. Root will create login and  add pub keys to authorized keys
-	- Api to post pub keys from source to target
+\subsection{Gaining access with SSH Key}
+Lack of defined governance for SSH key-based trust 
+relationships can allow an attacker who compromises one 
+system to quickly pivot from one system to another and extend
+a breach into other parts of an organization. Enough keys may be 
+stolen, leaked or disused—without having terminated their trust
+relationships—to pose a serious, ongoing threat to an organization.
+Attackers once get access to these keys, they will generates a new 
+key pair and adds the new authorized key to authorized keys file
+which is not usually monitored or audited.
+The December 2014 Sony hack included the leak of SSH keys as well
+as password lists, which led to the compromise of related services and
+accounts; mishandled SSH keys may have even facilitated the initial 
+compromise~\cite{hid-sp18-513-sans}.
 
-4. Before we post the keys, we need to ensure the source:user have access that
-   We can either maintain two config file (or manage thru mongodb) for now with the following info :
 
-  Config File (i)  Group   Dir        Access level
+\section{How to Manage SSH Risks?}
+To reduce the threat and comply with regulatory requirements, 
+organizations should take a proactive, end-to-end approach to SSH key
+security and management. Such an approach should include proactive
+controls to secure, manage and monitor the creation, storage and use
+of all privileged SSH keys. By employing a layered approach that includes
+the critical security measures outlined below, organizations can build
+out a proactive SSH key management program that reduces risks and helps 
+meet regulatory requirements.
 
-  Config File (ii) Groups    Members
- 
-If they have access, then we will add their keys.
+\subsection{Secure key storage}
+To reduce the risk of stolen SSH keys, organizations should store 
+private user and application keys in a highly-secure
+centralized repository that supports strong access controls.
+In an unmanaged state, SSH keys are stored as system files and can 
+easily be moved or copied. As a result, critical systems are only
+as secure as the machines or devices on which the private keys are
+stored. To mitigate this risk, organizations should consider removing
+SSH keys from vulnerable endpoints and systems and instead storing 
+them in a highly secure, highly available central repository that 
+supports access controls such as automated workflows for 
+elevated-privilege requests and strong authentication to quickly 
+verify user and application identities. With a secure centralized 
+model, organizations can remove critical credentials from individual
+machines, protect all credentials equally and centrally track all usage
+of SSH keys by users and applications~\cite{hid-sp18-513-gutmann}.
+\subsection{Proactive key rotation}
+Similar to static passwords, static SSH keys pose an on-going risk
+to organizations. Compromised private SSH keys can provide unauthorized
+users with permanent backdoor access into critical systems. 
+To mitigate this risk, organizations should rotate all SSH key 
+pairs at regular intervals, just as they rotate privileged passwords
+today. In unmanaged environments, with keys dispersed across devices,
+the prospect of frequently rotating thousands of keys can be daunting.
+However, once all user and application SSH keys are consolidated under
+one central management system, key pairs can be automatically rotated
+and public keys can be automatically distributed to target systems. 
+With central management and automated key rotation, organizations can
+better secure SSH keys and the target systems they protect, 
+implement best practices and comply with regulations without burdening
+the IT team\cite{hid-sp18-513-gutmann}.
+\subsection{Privileged session monitoring}
+Proactive protection of privileged credentials is a critical element
+in privileged account security, but proactive controls must be 
+complemented with equally strong detection and response capabilities.
+To minimize any potential damage caused by advanced external and
+inside attackers, organizations should proactively monitor all
+privileged sessions, including those that occur via SSH. When abnormal
+activity is detected, security teams should have the ability to
+remotely terminate the suspicious session to disrupt the potential attack.
+Similarly, organizations must also record all privileged session activity.
+When an incident is detected, response teams require immediate access to
+session recordings and detailed audit logs to determine exactly what
+happened and what steps must be taken to re-mediate the incident.
+Access to these privileged session recordings and audit logs can also be
+granted to auditors to help prove compliance with regulations
+~\cite{hid-sp18-513-gutmann}.
 
-Usually when we ssh for first time, it will ask for password, so user should have the credentials for both
-the server.
+\section{Measures to be taken for securing SSH Keys}
+Both internal and external auditors must add Secure Shell key 
+scanning and management to their checks. Proper controls and tools
+must be put in place for managing Secure Shell keys. The real issue
+is authorized keys, as they are the ones that grant access. No
+matter how much you try to protect private keys, it is of no help 
+until the millions of existing authorized keys have been sorted out.
+Regulators must establish firm deadlines for enterprises and execute 
+the revoking of all access when no longer needed. However, 
+implementation and audit guidelines should be clarified
+to ensure Secure Shell keys are taken into account. Boards, 
+audit committees, Security and Governance and risk management 
+officers must ensure Secure Shell key-based access is
+properly accounted for in their organizations to avoid civil 
+and criminal liability~\cite{hid-sp18-513-network}.
 
-If the user from source wants to ssh to some other id on target, he can login only after root adds the key.
+\section{NIST ISSUES GUIDANCE ON SSH KEY MANAGEMENT}
+US National Instute of Standards and Technology (NIST) as issued guidance on
+SSH key management as NIST IR 7966. 
 
+\subsection{REGULATORY COMPLIANCE REQUIRES SSH KEY MANAGEMENT}
+Typical requirements for compliance include:
+\begin{itemize}
+	\item Managing identities and credentials - SSH keys 
+	are access credentials
+	\item Provisioning and termination process for access 
+    - including access based on SSH keys
+	\item Segregation of duties - elimination of 
+	key-based access from test and development systems into
+	production
+    \item Disaster recovery - limiting attack spread
+    from primary systems to disaster recovery sites and
+    backup systems
+    \item Privileged access controls - SSH keys are often used to 
+    bypass jump servers
+    \item Boundary definition and documentation of connections for 
+    systems that contains sensitive data such as payment systems,
+    financial data environments, patient data 
+    environments, or between government information systems
+    \item Incident response and recovery
+\end{itemize}
+~\cite{hid-sp18-513-sshkey}.
+
+\section{Deployment}
+\subsection{Setup}
+\paragraph{Git repository}
+Setup the git repository:
+\begin{verbatim}
+export HID=hid-sp18-513 
+mkdir -p ~/github/cloudmesh-community
+cd ~/github/cloudmesh-community 
+git clone
+https://github.com/cloudmesh-community/$HID.git
+/project-code
+\end{verbatim}
+
+
+Validate code has been cloned into the directory.
+
+
+Technology : Python, Rest API, Sqlite3
+
+Install \textbf{Python 2.7.13} via PIP
+
+Install \textbf{pip install flask-restful} 
+
+Database : sshkeymgmt.db and three tables have been created
+to  capture access request, validation and status of the request.
+
+User will call the API requestaccess to request for sharing the key
+from one server to other server with host name and user id of the 
+source and target and also the location of public key in source host.
+
+API validate and action will validate if the user have a login in the
+target server. If not the request will be declined and the status will be
+updated on the table.
+
+Once the request is approved, the third API will actually copy the keys
+to target server. Before it copies, API will validate if the user calling the
+API have access to target server or whether he is any group and or has
+admin access.
 
 \section{Conclusion}
+SSH is an widely used important protocol that provides encrypted, 
+authenticated communications in a variety of configurations. Public key
+authentication is very vital to any organization, as it automates 
+access and can easily provide ease of login to accounts with elevated 
+privileges. However, SSH is also especially vulnerable to complexities
+that involve configuration, implementation and management. In order to
+reduce risk, proactive monitoring and implementation of best practices 
+both during implementation and afterward is needed. 
 
-Put here an conclusion. Conclusion and abstracts must not have any
-citations in the section.
-
+In a big organizations, there may be huge volumes of keys in use and
+remediation of an environment where SSH keys and trust relationships 
+have never been fully managed is complex, labor-intensive and 
+time-consuming. But there are frameworks available in the industry which 
+can be used or the project has few basic API to manage the key in smaller 
+environment which can be further enhanced to larger scale.
 
 \begin{acks}
 The author would like to thank Dr. Gregor von Laszewski for his support and 
-suggestions in writing this paper.
+suggestions in writing this report and succesfully completing the project.
 \end{acks}
 
 \bibliographystyle{ACM-Reference-Format}
 \bibliography{report}
+
+\end{document}
+
+
+
 
 
 
