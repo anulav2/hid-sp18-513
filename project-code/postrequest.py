@@ -5,7 +5,7 @@ from sqlite3 import Error
 from datetime import datetime
 import json
 import logging
-import createtables
+
 
 app = Flask(__name__)
 api = Api(app)
@@ -41,7 +41,6 @@ api.add_resource(request_access, '/request_access', methods=['POST'])
 if __name__ == '__main__':
     logging.getLogger().setLevel(logging.DEBUG)
     logging.info('calling create tables...')
-    createtables.main()
     logging.info('completed db setup...')
     logging.info('deploying API...')
     app.run(host='0.0.0.0', debug=True)
