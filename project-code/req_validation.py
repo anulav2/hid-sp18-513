@@ -15,12 +15,13 @@ def validate_action():
                         WHERE EXISTS (SELECT 1 FROM Usergrp WHERE user_req_access.tgt_user_id = usergrp.user_id
                         AND user_req_access.tgt_host_name = usergrp.server)
                         AND req_status = 'INITIAL_REQUEST';'''
-    DECLINED_QUERY = '''UPDATE user_req_access set req_status = 'DECLINED',
+    DECLINED_QUERY = '''UPDATE user_req_access set last_update_dt=current_timestamp, req_status = 'DECLINED',
                         req_reject_reason = 'User doesnot have access to Targer Server'
                         WHERE NOT EXISTS (SELECT 1 FROM Usergrp WHERE user_req_access.tgt_user_id = usergrp.user_id
                         AND user_req_access.tgt_host_name = usergrp.server)
                         AND req_status = 'INITIAL_REQUEST';'''
     REQUEST_COUNT_QUERY = '''SELECT COUNT(1) FROM user_req_access WHERE req_status = 'INITIAL_REQUEST';'''
+
     with sqlite3.connect('sshkeymgmt.db') as conn:
         c = conn.cursor()
         c.execute(REQUEST_COUNT_QUERY)
@@ -45,3 +46,5 @@ if __name__ == '__main__':
    logging.getLogger().setLevel(logging.DEBUG)
    logging.info('Validating Access Request')
    app.run(host='0.0.0.0', debug=True)
+
+        
