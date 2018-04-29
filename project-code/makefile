@@ -11,4 +11,8 @@ docker-stop:
 	docker stop $$(docker ps -a -q -f status=running)
 
 service:
-	sudo python app.py
+	sudo python request_access.py
+	sudo python request_validation.py
+	sudo python create_ssh_key.py
+	sudo python sshkeycopy.py
+	sudo python getstatus.py
