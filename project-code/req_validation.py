@@ -11,7 +11,7 @@ api = Api(app)
 
 def validate_action():
     """ Update Status """
-    APPROVED_QUERY = '''UPDATE user_req_access set req_status = 'APPROVED'
+    APPROVED_QUERY = '''UPDATE user_req_access set last_update_dt=current_timestamp, req_status = 'APPROVED'
                         WHERE EXISTS (SELECT 1 FROM Usergrp WHERE user_req_access.tgt_user_id = usergrp.user_id
                         AND user_req_access.tgt_host_name = usergrp.server)
                         AND req_status = 'INITIAL_REQUEST';'''
