@@ -11,6 +11,7 @@ from datetime import datetime
 import json
 import logging
 
+
 app = Flask(__name__)
 api = Api(app)
 
@@ -26,7 +27,7 @@ def copy_key(src_host, src_user, src_pub_key, tgt_host, tgt_user, procesed_by):
            sshcopykey(src_host, src_user, tgt_host, tgt_user, procesed_by, src_pub_key)
         else:
            print("Approved Record Not Found in Table user_req_access")
-        
+
 def sshcopykey(src_host, src_user, tgt_host, tgt_user, procesed_by, src_pub_key):
     hostname = socket.gethostname()
     currentuser = getpass.getuser()
@@ -37,17 +38,21 @@ def sshcopykey(src_host, src_user, tgt_host, tgt_user, procesed_by, src_pub_key)
            print "You Need to Login as root or as user: ", src_user
         else:
              if (os.path.isfile(src_pub_key)):
-                if "ssh-copy-id" in os.listdir("/usr/local/bin"):
-                   command = "ssh-copy-id `-i %s %s@%s" % (src_pub_key, tgt_user, tgt_host)
-                   subprocess.call(command, shell=True)
-                   print ("SSH Key Copied")
-                   req_status = "COMPLETED"
-                   upd_db(src_host, src_user, tgt_host, tgt_user, procesed_by, req_status)
+                   command = "ssh-copy-id -i %s %s@%s" % (src_pub_key, tgt_user, tgt_host)
+                   print "command :",command
+                   try:
+                       subprocess.call(command, shell=True)
+                   except subprocess.CalledProcessError as errData:
+                       errMsg = errData.output
+                       print(errMsg)
+                       print ("SSH Key Copied")
+                       req_status = "COMPLETED"
+                       upd_db(src_host, src_user, tgt_host, tgt_user, procesed_by, req_status)
              else:
                    req_status = "FAILED"
                    logging.info('Source Public Key Not Found')
                    upd_db(src_host, src_user, tgt_host, tgt_user, procesed_by, req_status)
-                    
+               
 def upd_db(src_host, src_user, tgt_host, tgt_user, procesed_by, req_status):
 
         """Update Final Status """
@@ -59,13 +64,15 @@ def upd_db(src_host, src_user, tgt_host, tgt_user, procesed_by, req_status):
         with sqlite3.connect('sshkeymgmt.db') as conn:
              c = conn.cursor()
              if req_status == 'FAILED':
-                c.execute(failed_query,processed_by, src_host, src_user, tgt_host, tgt_user)
+                c.execute('''UPDATE user_req_access set last_update_dt=current_timestamp, req_status = 'FAILED',req_reject_reason = 'Public Key Not Found in Source Server', last_update_by = ? WHERE src_host_name = ? AND src_user_id = ? AND tgt_host_name = ? AND tgt_user_id = ?;''',(procesed_by,src_host, src_user, tgt_host, tgt_user))
+                results = c.fetchall()
              else:
-                c.execute(approved_query,processed_by,src_host, src_user, tgt_host, tgt_user)
+                c.execute('''UPDATE user_req_access set last_update_dt=current_timestamp, req_status = 'COMPLETED',req_reject_reason = ' ', last_update_by = ? WHERE src_host_name = ? AND src_user_id = ? AND tgt_host_name = ? AND tgt_user_id = ?;''',(procesed_by,src_host, src_user, tgt_host, tgt_user))
 
              c.execute('''SELECT * FROM user_req_access;''')
              results = c.fetchall()
              print(results)
+
 
 class copy_ssh_key(Resource):
     """
@@ -83,6 +90,4 @@ if __name__ == "__main__":
    logging.info('Copy SSH Key')
    app.run(host='0.0.0.0', debug=True)
 
- 
 
-  
