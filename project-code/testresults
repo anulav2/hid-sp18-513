@@ -1,0 +1,136 @@
+python request_access.py
+INFO:root:calling create tables...
+INFO:root:completed db setup...
+INFO:root:deploying API...
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+INFO:root:calling create tables...
+INFO:root:completed db setup...
+INFO:root:deploying API...
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger pin code: 243-228-505
+INFO:root:recieved request
+DEBUG:root:{u'src_user': u'gani', u'tgt_user': u'nemo', u'tgt_host': u'gani-VirtualBox', u'src_key': u'/home/gani/.ssh/id_rsa.pub', u'req_by': u'Uma', u'src_host': u'gani-VirtualBox'}
+INFO:root:recieved valuels to insert
+DEBUG:root:(u'gani-VirtualBox', u'gani', u'/home/gani/.ssh/id_rsa.pub', u'gani-VirtualBox', u'nemo', u'Uma', 'INITIAL_REQUEST', 'NULL', u'Uma')
+INFO:root:completed insert into db
+INFO:werkzeug:127.0.0.1 - - [29/Apr/2018 04:43:43] "POST /request_access HTTP/1.1" 200 -
+
+gani@gani-VirtualBox:~/Project/flaskapi$ sh curlcall.sh
+null
+
+
+ python request_validation.py
+INFO:root:Validating Access Request
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+INFO:root:Validating Access Request
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger pin code: 243-228-505
+INFO:root:Validating Request
+('Number of requests to be processed: {0}', [(1,)])
+[(u'gani-VirtualBox', u'gani', u'/home/gani/.ssh/id_rsa.pub', u'gani-VirtualBox', u'nemo', u'2018-04-29 11:43:43', u'Uma', u'DECLINED', u'User doesnot have access to Targer Server', u'2018-04-29 11:46:10', u'Uma')]
+INFO:werkzeug:127.0.0.1 - - [29/Apr/2018 04:46:10] "POST /validate_and_action HTTP/1.1" 200 -
+
+python request_validation.py
+INFO:root:Validating Access Request
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+INFO:root:Validating Access Request
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger pin code: 243-228-505
+INFO:root:Validating Request
+('Number of requests to be processed: {0}', [(1,)])
+[(u'gani-VirtualBox', u'gani', u'/home/gani/.ssh/id_rsa.pub', u'gani-VirtualBox', u'nemo', u'2018-04-29 11:50:41', u'Uma', u'APPROVED', u'NULL', u'2018-04-29 11:50:55', u'Uma')]
+INFO:werkzeug:127.0.0.1 - - [29/Apr/2018 04:50:55] "POST /validate_and_action HTTP/1.1" 200 -
+
+
+gani@gani-VirtualBox:~/Project/flaskapi$ sh curlvalidation.sh
+null
+
+
+python getstatus.py
+INFO:root:Deploying API to Get Status of the Request...
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+INFO:root:Deploying API to Get Status of the Request...
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger pin code: 243-228-505
+INFO:root:recieved request
+[(u'gani-VirtualBox', u'gani', u'gani-VirtualBox', u'nemo', u'Uma', u'APPROVED', u'Uma')]
+INFO:werkzeug:127.0.0.1 - - [29/Apr/2018 04:51:47] "POST /getstatus/APPROVED HTTP/1.1" 200 -
+
+gani@gani-VirtualBox:~/Project/flaskapi$ sh curlgetstatus.sh
+null
+
+python create_ssh_key.py
+INFO:root:Create SSH Key
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+INFO:root:Create SSH Key
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger pin code: 243-228-505
+INFO:root:Creating SSH Key
+DEBUG:root:{u'src_user': u'gani', u'src_host': u'gani-VirtualBox'}
+Generating public/private rsa key pair.
+Your identification has been saved in id_rsa.
+Your public key has been saved in id_rsa.pub.
+The key fingerprint is:
+SHA256:P+sKQQttDDpvyPLWTPfr/1ai9Asp8CfYTIv2B0TC7EE gani@gani-VirtualBox
+The key's randomart image is:
++---[RSA 2048]----+
+|    .+E          |
+|   . += .        |
+|  o ..=+         |
+| . + +...        |
+|. o + =.S        |
+| o = . @.o... .  |
+|  o o = Oo*o o   |
+| .   . o =o+o    |
+|       .==+oo.   |
++----[SHA256]-----+
+SSH Key Created
+INFO:werkzeug:127.0.0.1 - - [29/Apr/2018 04:54:09] "POST /create_ssh_key HTTP/1.1" 200 -
+
+python create_ssh_key.py
+INFO:root:Create SSH Key
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+INFO:root:Create SSH Key
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger pin code: 243-228-505
+INFO:root:Creating SSH Key
+DEBUG:root:{u'src_user': u'gani', u'src_host': u'gani-VirtualBox'}
+SSH Key is already Present
+INFO:werkzeug:127.0.0.1 - - [29/Apr/2018 04:52:59] "POST /create_ssh_key HTTP/1.1" 200 -
+
+gani@gani-VirtualBox:~/Project/flaskapi$ sh curlcreatessh.sh
+null
+
+python sshkeycopy.py
+INFO:root:Copy SSH Key
+INFO:werkzeug: * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+INFO:root:Copy SSH Key
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger pin code: 243-228-505
+INFO:root:Creating SSH Key
+DEBUG:root:{u'src_user': u'gani', u'req_processed_by': u'gani', u'tgt_user': u'nemo', u'tgt_host': u'gani-VirtualBox', u'src_pub_key': u'/home/gani/.ssh/id_rsa.pub', u'src_host': u'gani-VirtualBox'}
+Approved Record Found in Table user_req_access
+command : ssh-copy-id -i /home/gani/.ssh/id_rsa.pub nemo@gani-VirtualBox
+/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/gani/.ssh/id_rsa.pub"
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+
+/usr/bin/ssh-copy-id: ERROR: ssh: connect to host gani-virtualbox port 22: Connection refused
+
+INFO:werkzeug:127.0.0.1 - - [29/Apr/2018 04:55:26] "POST /copy_ssh_key HTTP/1.1" 200 -
+
+gani@gani-VirtualBox:~/Project/flaskapi$ sh curlsshcopy.sh
+null
+
+
+
+
+
+
+
