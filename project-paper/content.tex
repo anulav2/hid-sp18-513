@@ -167,6 +167,48 @@ authorized keys file on the server. It creates the .ssh directory
 if it does not exist and it also creates the authorized keys file
 if it does not exist and then ssh key is copied to server.
 
+\section{SSH Client Configuration Files}
+The ssh program on a host receives its configuration from either
+the command line or from configuration files:
+\begin{itemize}
+\item ~/.ssh/config
+\item /etc/ssh/ssh\_config
+\end{itemize}
+
+ssh command gets the configuration data from the below three 
+mentioned sources in the order they are stated:
+
+\begin{itemize}
+\item command line options
+\item user-specific configuration file (~/.ssh/config)
+\item system-wide configuration file (/etc/ssh/ssh\_config)
+\end{itemize}
+~\cite{hid-sp18-513-sshkeyinc}. 
+
+\section{SSH-COPY-ID}
+ssh-copy-id installs an SSH key on a server as an authorized key. 
+Main use of SSH Copy Id is to provision access without prompting
+the user for the password. The ssh copy id command edits the 
+authorized keys file on the server. It creates the .ssh directory 
+if it does not exist and it also creates the authorized keys file
+if it does not exist and then ssh key is copied to server.
+
+\section{SSH Agents}
+If private key is encrypted with a passphrase, then passphrase
+must be entered every time to connect to an SSH server using
+public-key authentication. Each individual invocation of ssh
+or scp will need the passphrase in order to decrypt your
+private key before authentication can proceed.
+
+An SSH agent is a program which caches the decrypted private
+keys and provides them to SSH client programs. User need to
+provide passphrase once, when adding your private key 
+to the agent's cache. This is used when frequent SSH connections
+are made. An agent is typically configured to run automatically 
+upon login and persist for the duration of your login session. 
+SSH-Agent is the default agent included with OpenSSH
+~\cite{hid-sp18-513-sshkeyinc}.
+
 \section{SSH Keys: The Hidden Credentials} 
 SSH keys are always the major concern to security teams because 
 these credentials can be easily created, and are then difficult to
