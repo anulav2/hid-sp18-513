@@ -9,6 +9,10 @@ COPY . /sshkeymgmt
 WORKDIR /sshkeymgmt
 RUN pip install -r requirements.txt
 
-EXPOSE 5000
+EXPOSE 5001
+EXPOSE 5002
+EXPOSE 5003
+EXPOSE 5004
+EXPOSE 5005
 
 ENTRYPOINT ["make", "service"]
