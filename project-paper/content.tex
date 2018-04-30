@@ -1,4 +1,4 @@
-% status: 98
+% status: 100
 % chapter: Security
 
 \title{Service for Managing the Public Key}
@@ -367,35 +367,37 @@ Install \textbf{Python 2.7.13} via PIP
 Install \textbf{pip install flask-restful} 
 
 Database : sshkeymgmt.db 
-Tables : usergrp, user access, user req access 
+Tables : usergrp, user access, user\_req\_access 
 API : 
-    /request access
+    /request\_access
 
-    /validateandaction
+    /validate\_and\_action
 
-    /createsshkey
+    /create\_ssh\_key
 
-    /copysshkey
+    /copy\_ssh\_key
 
     /getstatus
 
-User will call the API request access to request for sharing the key
-from one server to other server with host name and user id of the 
-source and target and also the location of public key in source host.
+User will call the API request access to request for sharing 
+the key from one server to other server with host name and 
+user id of the source and target and also the location of 
+public key in source host.
 
-API validate and action will validate if the user have a login in the
-target server. If not the request will be declined and the status will be
-updated on the table.
+API validate and action will validate if the user have a 
+login in the target server. If not the request will be declined
+and the status will be updated on the table.
 
-Once the request is approved, the third API will actually copy the keys
-to target server. Before it copies, API will validate if the user calling the
-API have access to target server or whether he is any group and or has
-admin access. 
+Once the request is approved, the third API will actually copy
+the keys to target server. Before it copies, API will validate
+if the user calling the API have access to target server or
+whether he is any group and or has admin access. 
 
-If key is not present, createsshkey api can be used to create the ssh key.
+If key is not present, create\_ssh\_key api can be used to
+create the ssh key.
 
-Getstatus api is used to get status of the request at any point, user need
-to pass the stats : APPROVED, DENIED, COMPLETED, FAILED.
+Getstatus api is used to get status of the request at any point,
+user need to pass the status : APPROVED, DENIED, COMPLETED, FAILED.
 
 \section{SSH Key Management Products}
 There are several SSH Key Management Products that are readily available
@@ -428,7 +430,7 @@ This project can be further enhanced and extended to include active directory
 or LDAP integrations.
 
 \begin{acks}
-The author would like to thank Dr. Gregor von Laszewski for his support and 
+The author would like to thank Dr.~Gregor~von~Laszewski for his support and 
 suggestions in writing this report and succesfully completing the project.
 \end{acks}
 
