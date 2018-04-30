@@ -1,0 +1,17 @@
+version: "2"
+
+services:
+
+
+
+  request_access:
+    build: .
+    ports:
+      - "5100:5100"
+
+
+
+  validate_action:
+    build: .
+    ports:
+      - "5101:5101"
