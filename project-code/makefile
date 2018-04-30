@@ -11,4 +11,4 @@ docker-stop:
         docker stop $$(docker ps -a -q -f status=running)
 
 service:
-        sh start.sh
+        sh service.sh
