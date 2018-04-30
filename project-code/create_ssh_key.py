@@ -1,3 +1,4 @@
+from __future__ import print_function
 import os
 import sys
 import subprocess
@@ -32,7 +33,7 @@ def generate_key(src_host, src_user):
         if (currentuser != src_user and 'SUDO_USER' not in os.environ and os.geteuid() != 0):
            print "You Need to Login as root or as user: ", src_user
         else:
-             SSH_DIR = "/home/%s/.ssh" % (src_user)
+             SSH_DIR = "/home/{user}/.ssh".format(user=src_user)
              if not os.path.exists(SSH_DIR):
                 os.mkdir(SSH_DIR)
                 os.chdir(SSH_DIR)
