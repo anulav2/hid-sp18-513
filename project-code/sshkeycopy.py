@@ -88,6 +88,6 @@ api.add_resource(copy_ssh_key,'/copy_ssh_key',methods=['POST'])
 if __name__ == "__main__":
    logging.getLogger().setLevel(logging.DEBUG)
    logging.info('Copy SSH Key')
-   app.run(host='0.0.0.0',port=5005,debug=True)
+   app.run(host='0.0.0.0', port=5005, debug=True)
 
 
