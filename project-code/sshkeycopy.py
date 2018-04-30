@@ -1,3 +1,4 @@
+from __future__ import print_function
 import os
 import sys
 import subprocess
@@ -38,8 +39,8 @@ def sshcopykey(src_host, src_user, tgt_host, tgt_user, procesed_by, src_pub_key)
            print "You Need to Login as root or as user: ", src_user
         else:
              if (os.path.isfile(src_pub_key)):
-                   command = "ssh-copy-id -i %s %s@%s" % (src_pub_key, tgt_user, tgt_host)
-                   print "command :",command
+                   command = "ssh-copy-id -i {key} {user}@{host}".format(key=src_pub_key, user=tgt_user, host=tgt_host)
+                   print "command :", command
                    try:
                        subprocess.call(command, shell=True)
                    except subprocess.CalledProcessError as errData:
