@@ -34,7 +34,7 @@ public key.
 SSH is a way for anyone to connect to any servers in a more secured way. 
 Any information that is exchanged between host computer to the server is
 encrypted which prevents someone from snooping the data. There are two
-ways by which user can authenticate to connect to the servers : one by
+ways by which user can authenticate to connect to the servers: one by
 providing user name and password combination or by using SSH keys.
 SSH keys are used in most organizations. The problem with SSH keys is keeping 
 track of whose SSH key has been placed on which machines and making sure that 
@@ -293,7 +293,9 @@ verify user and application identities. With a secure centralized
 model, organizations can remove critical credentials from individual
 machines, protect all credentials equally and centrally track all usage
 of SSH keys by users and applications~\cite{hid-sp18-513-gutmann}.
+
 \subsection{Proactive key rotation}
+
 Similar to static passwords, static SSH keys pose an on-going risk
 to organizations. Compromised private SSH keys can provide unauthorized
 users with permanent backdoor access into critical systems. 
@@ -310,6 +312,7 @@ implement best practices and comply with regulations without burdening
 the IT team\cite{hid-sp18-513-gutmann}.
 
 \subsection{Privileged Session monitoring}
+
 Proactive protection of privileged credentials is a critical element
 in privileged account security, but proactive controls must be 
 complemented with equally strong detection and response capabilities.
@@ -327,6 +330,7 @@ granted to auditors to help prove compliance with regulations
 ~\cite{hid-sp18-513-gutmann}.
 
 \section{Measures to be taken for Securing SSH Keys}
+
 Both internal and external auditors must add Secure Shell key 
 scanning and management to their checks. Proper controls and tools
 must be put in place for managing Secure Shell keys. The real issue
@@ -343,6 +347,7 @@ properly accounted for in their organizations to avoid civil
 and criminal liability~\cite{hid-sp18-513-network}.
 
 \subsection{Use Passphrase}
+
 It is always recommended that keys used for single sign-on should 
 have a passphrase to prevent use of the key if it is stolen or 
 compromised. It is the best practice to use keys without
@@ -352,10 +357,11 @@ The ssh-agent and ssh-add programs can be used to avoid having to
 enter the passphrase every time the key is used.
 
 \subsection{Command Restrictions}
-A command restriction is a command="<permitted command>" option added
-to the beginning of the line in the target server authorized keys file.
-The copy-id tool does not default any restrictions but it is highly 
-recommended when the key is used for automating operation.
+
+A command restriction is a command=``<permitted command>'' option
+added to the beginning of the line in the target server authorized
+keys file.  The copy-id tool does not default any restrictions but it
+is highly recommended when the key is used for automating operation.
 
 \section{NIST ISSUES GUIDANCE ON SSH KEY MANAGEMENT}
 US National Instute of Standards and Technology (NIST) as issued guidance on
@@ -402,15 +408,15 @@ https://github.com/cloudmesh-community/$HID.git
 /project-code
 \end{verbatim}
 
-Technology : Python, Flask API, Sqlite3
+Technology: Python, Flask API, Sqlite3
 
 Install \textbf{Python 2.7.13} via PIP
 
 Install \textbf{pip install flask-restful} 
 
-Database : sshkeymgmt.db 
-Tables : usergrp, user access, user\_req\_access 
-API : 
+Database: sshkeymgmt.db 
+Tables: usergrp, user access, user\_req\_access 
+API: 
     /request\_access
 
     /validate\_and\_action
@@ -439,9 +445,10 @@ If key is not present, create\_ssh\_key api can be used to
 create the ssh key.
 
 Getstatus api is used to get status of the request at any point,
-user need to pass the status : APPROVED, DENIED, COMPLETED, FAILED.
+user need to pass the status: APPROVED, DENIED, COMPLETED, FAILED.
 
 \section{SSH Key Management Products}
+
 There are several SSH Key Management Products that are readily available
 in the market. These products will help to generate, manage, store and
 rotates the key periodically. SSH.com's Universal Key Manager is the
@@ -449,7 +456,15 @@ industry's leading product which provides risk assessments, process driven,
 full control and all in one view. There are other products such as 
 FOXPASS which can integrate with LDAP server.
 
+\section{Improvements}
+
+In this project, we have define a very basic api to manage the ssh keys.
+This project can be further enhanced and extended to include active directory 
+or LDAP integrations.
+
+
 \section{Conclusion}
+
 SSH is an widely used important protocol that provides encrypted, 
 authenticated communications in a variety of configurations. Public key
 authentication is very vital to any organization, as it automates 
@@ -466,10 +481,6 @@ time-consuming. But there are frameworks available in the industry which
 can be used or the project has few basic API to manage the key in smaller 
 environment which can be further enhanced to larger scale.
 
-\section{Improvements}
-In this project, we have define a very basic api to manage the ssh keys.
-This project can be further enhanced and extended to include active directory 
-or LDAP integrations.
 
 \begin{acks}
 The author would like to thank Dr.~Gregor~von~Laszewski for his support and 
