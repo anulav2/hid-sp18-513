@@ -28,10 +28,10 @@ def generate_key(src_host, src_user):
     hostname = socket.gethostname()
     currentuser = getpass.getuser()
     if hostname != src_host:
-       print "You Need to Login to Correct Host: ", src_host
+       print ("You Need to Login to Correct Host:", src_host)
     else:
         if (currentuser != src_user and 'SUDO_USER' not in os.environ and os.geteuid() != 0):
-           print "You Need to Login as root or as user: ", src_user
+           print ("You Need to Login as root or as user:", src_user)
         else:
              SSH_DIR = "/home/{user}/.ssh".format(user=src_user)
              if not os.path.exists(SSH_DIR):
