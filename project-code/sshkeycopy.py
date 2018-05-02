@@ -1,3 +1,4 @@
+from __future__ import print_function
 import os
 import sys
 import subprocess
@@ -32,14 +33,14 @@ def sshcopykey(src_host, src_user, tgt_host, tgt_user, procesed_by, src_pub_key)
     hostname = socket.gethostname()
     currentuser = getpass.getuser()
     if hostname != src_host:
-       print "You Need to Login to Correct Host: ", src_host
+       print ("You Need to Login to Correct Host:", src_host)
     else:
         if (currentuser != src_user and 'SUDO_USER' not in os.environ and os.geteuid() != 0):
-           print "You Need to Login as root or as user: ", src_user
+           print ("You Need to Login as root or as user:", src_user)
         else:
              if (os.path.isfile(src_pub_key)):
-                   command = "ssh-copy-id -i %s %s@%s" % (src_pub_key, tgt_user, tgt_host)
-                   print "command :",command
+                   command = "ssh-copy-id -i {key} {user}@{host}".format(key=src_pub_key, user=tgt_user, host=tgt_host)
+                   print ("command :", command)
                    try:
                        subprocess.call(command, shell=True)
                    except subprocess.CalledProcessError as errData:
@@ -88,6 +89,6 @@ api.add_resource(copy_ssh_key,'/copy_ssh_key',methods=['POST'])
 if __name__ == "__main__":
    logging.getLogger().setLevel(logging.DEBUG)
    logging.info('Copy SSH Key')
-   app.run(host='0.0.0.0', debug=True)
+   app.run(host='0.0.0.0', port=5005, debug=True)
 
 

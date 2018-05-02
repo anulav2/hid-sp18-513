@@ -33,4 +33,4 @@ api.add_resource(request_access, '/getstatus/<string:request_status>', methods=[
 if __name__ == '__main__':
     logging.getLogger().setLevel(logging.DEBUG)
     logging.info('Deploying API to Get Status of the Request...')
-    app.run(host='0.0.0.0', debug=True)
+    app.run(host='0.0.0.0', port=5002, debug=True)

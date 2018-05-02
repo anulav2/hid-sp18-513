@@ -43,7 +43,7 @@ if __name__ == '__main__':
     createtables.main()
     logging.info('completed db setup...')
     logging.info('deploying API...')
-    app.run(host='0.0.0.0', debug=True)
+    app.run(host='0.0.0.0', port=5503, debug=True)
 
 
 
