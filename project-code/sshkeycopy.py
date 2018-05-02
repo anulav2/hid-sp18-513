@@ -33,14 +33,14 @@ def sshcopykey(src_host, src_user, tgt_host, tgt_user, procesed_by, src_pub_key)
     hostname = socket.gethostname()
     currentuser = getpass.getuser()
     if hostname != src_host:
-       print "You Need to Login to Correct Host: ", src_host
+       print ("You Need to Login to Correct Host:", src_host)
     else:
         if (currentuser != src_user and 'SUDO_USER' not in os.environ and os.geteuid() != 0):
-           print "You Need to Login as root or as user: ", src_user
+           print ("You Need to Login as root or as user:", src_user)
         else:
              if (os.path.isfile(src_pub_key)):
                    command = "ssh-copy-id -i {key} {user}@{host}".format(key=src_pub_key, user=tgt_user, host=tgt_host)
-                   print "command :", command
+                   print ("command :", command)
                    try:
                        subprocess.call(command, shell=True)
                    except subprocess.CalledProcessError as errData:
