@@ -1,4 +1,4 @@
-## FLASK API to copy the ssh public from one server to another server 
+## FLASK API to copy the ssh public key from one server to another server 
   
 * Three API endpoints are provided.
 
@@ -27,7 +27,7 @@
   
   * ```make docker-start```
 
-* Test the service using following curl commands
+* Test the service using following curl commands or run sh curlall.sh
   
   
   * ```curl -H "Content-Type: application/json" -X POST -d '{"src_host":"gani-VirtualBox", "src_user":"gani", "src_key":"/home/gani/.ssh/id_rsa.pub", "tgt_host":"gani-VirtualBox", "tgt_user":"nemo","req_by":"Uma"}' http://localhost:5000/request_access```
