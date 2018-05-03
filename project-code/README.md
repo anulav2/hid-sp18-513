@@ -68,6 +68,10 @@
 * Ensure Python 2 environment is activated
 
 	* ``` pyenv activate env2 (Refer handbook for details ```
+	
+VIDEO DEMONSTARTION: 
+
+A video demonstartion of the project is provided [video]https://youtu.be/LPQS-PZpiD4.
   
   
 
