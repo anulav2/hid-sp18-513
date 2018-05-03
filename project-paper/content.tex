@@ -126,8 +126,8 @@ to users and this authentication mechanism is defined as public key
 authentication. Authorized keys is the file that contains public 
 key of the other server from which passwordless sign on can be 
 initiated and it is configured separately for each user. It is 
-usually present in .ssh under home directory. 
-Key location and name are editable in SSH server configuration 
+usually present in \verb|.ssh| under home directory. Key 
+location and name are editable in SSH server configuration 
 files. To properly secure and manage, it is usually named same as 
 root owned location~\cite{hid-sp18-513-sshkeyinc}.
 A key pair can be created using the ssh-keygen in openssh and then
@@ -165,16 +165,16 @@ is not yet universal~\cite{hid-sp18-513-sshkeyinc}.
 ssh-copy-id installs an SSH key on a server as an authorized key. 
 Main use of SSH Copy Id is to provision access without prompting
 the user for the password. The ssh copy id command edits the 
-authorized keys file on the server. It creates the .ssh directory 
-if it does not exist and it also creates the authorized keys file
-if it does not exist and then ssh key is copied to server.
+authorized keys file on the server. It creates the \verb|.ssh| 
+directory if it does not exist and it also creates the authorized 
+keys file if it does not exist and then ssh key is copied to server.
 
 \section{SSH Client Configuration Files}
 The ssh program on a host receives its configuration from either
 the command line or from configuration files:
 \begin{itemize}
-\item ~/.ssh/config
-\item /etc/ssh/ssh\_config
+\item \verb|~/.ssh/config|
+\item \verb|/etc/ssh/ssh_config|
 \end{itemize}
 
 ssh command gets the configuration data from the below three 
@@ -182,8 +182,8 @@ mentioned sources in the order they are stated:
 
 \begin{itemize}
 \item command line options
-\item user-specific configuration file (~/.ssh/config)
-\item system-wide configuration file (/etc/ssh/ssh\_config)
+\item user-specific configuration file \verb|(~/.ssh/config)|
+\item system-wide configuration file \verb|(/etc/ssh/ssh_config)|
 \end{itemize}
 ~\cite{hid-sp18-513-sshkeyinc}. 
 
@@ -191,9 +191,10 @@ mentioned sources in the order they are stated:
 ssh-copy-id installs an SSH key on a server as an authorized key. 
 Main use of SSH Copy Id is to provision access without prompting
 the user for the password. The ssh copy id command edits the 
-authorized keys file on the server. It creates the .ssh directory 
-if it does not exist and it also creates the authorized keys file
-if it does not exist and then ssh key is copied to server.
+authorized keys file on the server. It creates the \verb|.ssh| 
+directory if it does not exist and it also creates the 
+authorized keys file if it does not exist and then ssh key is 
+copied to server.
 
 \section{SSH Agents}
 If private key is encrypted with a passphrase, then passphrase
@@ -360,18 +361,10 @@ The ssh-agent and ssh-add programs can be used to avoid having to
 enter the passphrase every time the key is used.
 
 \subsection{Command Restrictions}
-<<<<<<< HEAD
-A command restriction is a command$=\langle permitted command \rangle$ option added
-to the beginning of the line in the target server authorized keys file.
-The copy-id tool does not default any restrictions but it is highly 
-recommended when the key is used for automating operation.
-=======
-
-A command restriction is a command=``<permitted command>'' option
+A command restriction is a \verb|command=<permitted command>| option
 added to the beginning of the line in the target server authorized
 keys file.  The copy-id tool does not default any restrictions but it
 is highly recommended when the key is used for automating operation.
->>>>>>> 2570bd4f979de4ed427a21bcbd4e92ec6f5947c6
 
 \section{NIST ISSUES GUIDANCE ON SSH KEY MANAGEMENT}
 US National Instute of Standards and Technology (NIST) as issued guidance on
@@ -439,6 +432,7 @@ Technology: Python, Flask API, Sqlite3
 Install \textbf{Python 2.7.13} via PIP
 
 Install \textbf{pip install flask-restful} 
+
 
 Database: sshkeymgmt.db 
 
