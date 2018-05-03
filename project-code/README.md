@@ -71,7 +71,7 @@
 	
 VIDEO DEMONSTARTION: 
 
-A video demonstartion of the project is provided [video]https://youtu.be/LPQS-PZpiD4.
+A video demonstartion of the project is provided [video](https://youtu.be/LPQS-PZpiD4).
   
   
 
