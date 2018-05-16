@@ -1,3 +1,5 @@
+DO NOT MODIFY, this file is now maintained in book/cloud-clusters
+
 # Pi Docker
 Docker is a tool that allows you to deploy applications inside of software 
 containers. It is a method of packaging software, to include not only your 
